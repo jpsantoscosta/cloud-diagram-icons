@@ -1,0 +1,63 @@
+name: Refresh icon index
+
+on:
+  schedule:
+    # Monthly, 06:00 UTC on the 3rd: a few days after Microsoft/jgraph
+    # typically land monthly icon updates.
+    - cron: '0 6 3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Rebuild icons.json from jgraph/drawio
+        shell: pwsh
+        run: ./scripts/build-index.ps1
+
+      - name: Summarise changes
+        id: diff
+        shell: pwsh
+        run: |
+          $changed = (git diff --name-only) -join ', '
+          "changed=$changed" >> $env:GITHUB_OUTPUT
+          if ($changed) {
+            $stat = git diff --stat | Out-String
+            Write-Host "Changes detected:`n$stat"
+          }
+          else {
+            Write-Host 'Index is up to date.'
+          }
+
+      - name: Open PR with refreshed index
+        if: steps.diff.outputs.changed != ''
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          branch: bot/refresh-index
+          commit-message: 'Refresh icons.json from jgraph/drawio'
+          title: 'Refresh icon index'
+          body: |
+            Automated monthly refresh of `icons.json` against `Sidebar-Azure2.js` in jgraph/drawio.
+
+            Changed files: ${{ steps.diff.outputs.changed }}
+
+            Review the diff for renamed or removed icons before merging.
+          delete-branch: true
+
+      - name: Open issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Icon index refresh failed ($(date -u +%Y-%m-%d))" \
+            --body "The scheduled icons.json refresh failed. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

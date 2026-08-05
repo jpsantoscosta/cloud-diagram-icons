@@ -1,0 +1,690 @@
+{
+  "Active Directory": {
+    "name": "Azure Active Directory",
+    "aliases": [
+      "AAD legacy icon"
+    ]
+  },
+  "Advisor": {
+    "name": "Azure Advisor",
+    "aliases": []
+  },
+  "AI Foundry": {
+    "name": "Microsoft Foundry",
+    "aliases": [
+      "Azure AI Foundry",
+      "AI Foundry",
+      "AI Studio",
+      "Foundry"
+    ]
+  },
+  "API Center": {
+    "name": "Azure API Center",
+    "aliases": []
+  },
+  "API Management Services": {
+    "name": "Azure API Management",
+    "aliases": [
+      "APIM",
+      "API Management"
+    ]
+  },
+  "App Service Plans": {
+    "name": "App Service Plan",
+    "aliases": [
+      "Hosting Plan"
+    ]
+  },
+  "App Services": {
+    "name": "Azure App Service",
+    "aliases": [
+      "App Service",
+      "Web App",
+      "Web Apps"
+    ]
+  },
+  "Application Gateways": {
+    "name": "Azure Application Gateway",
+    "aliases": [
+      "Application Gateway",
+      "App Gateway",
+      "AGW"
+    ]
+  },
+  "Application Insights": [
+    "App Insights"
+  ],
+  "Arc": {
+    "name": "Azure Arc",
+    "aliases": []
+  },
+  "Automation Accounts": {
+    "name": "Azure Automation",
+    "aliases": [
+      "Automation Account",
+      "Runbook"
+    ]
+  },
+  "Azure AD B2C": [
+    "B2C",
+    "Azure Active Directory B2C"
+  ],
+  "Azure Machine Learning": [
+    "AML",
+    "Machine Learning Workspace",
+    "Azure ML"
+  ],
+  "Azure Managed Redis": [
+    "Managed Redis"
+  ],
+  "Backup Center": {
+    "name": "Azure Backup",
+    "aliases": []
+  },
+  "Bastions": {
+    "name": "Azure Bastion",
+    "aliases": [
+      "Bastion"
+    ]
+  },
+  "Batch Accounts": {
+    "name": "Azure Batch",
+    "aliases": [
+      "Batch Account"
+    ]
+  },
+  "Blueprints": {
+    "name": "Azure Blueprints",
+    "aliases": []
+  },
+  "Bot Services": {
+    "name": "Azure AI Bot Service",
+    "aliases": [
+      "Bot Service",
+      "Azure Bot Service"
+    ]
+  },
+  "Cache Redis": {
+    "name": "Azure Cache for Redis",
+    "aliases": [
+      "Redis",
+      "Redis Cache"
+    ]
+  },
+  "CDN Profiles": {
+    "name": "Azure CDN",
+    "aliases": [
+      "CDN Profile",
+      "Content Delivery Network"
+    ]
+  },
+  "Cognitive Search": {
+    "name": "Azure AI Search",
+    "aliases": [
+      "AI Search",
+      "Azure Cognitive Search"
+    ]
+  },
+  "Cognitive Services": {
+    "name": "Azure AI Services",
+    "aliases": [
+      "AI Services"
+    ]
+  },
+  "Communication Services": {
+    "name": "Azure Communication Services",
+    "aliases": [
+      "ACS"
+    ]
+  },
+  "Computer Vision": {
+    "name": "Azure AI Vision",
+    "aliases": []
+  },
+  "Container App Environments": {
+    "name": "Azure Container Apps",
+    "aliases": [
+      "Container Apps",
+      "ACA",
+      "Container Apps Environment"
+    ]
+  },
+  "Container Instances": {
+    "name": "Azure Container Instances",
+    "aliases": [
+      "ACI",
+      "Container Instance"
+    ]
+  },
+  "Container Registries": {
+    "name": "Azure Container Registry",
+    "aliases": [
+      "ACR",
+      "Container Registry"
+    ]
+  },
+  "Copilot Studio": {
+    "name": "Microsoft Copilot Studio",
+    "aliases": []
+  },
+  "Cosmos DB": {
+    "name": "Azure Cosmos DB",
+    "aliases": [
+      "CosmosDB",
+      "DocumentDB"
+    ]
+  },
+  "Cost Management and Billing": {
+    "name": "Microsoft Cost Management",
+    "aliases": [
+      "Cost Management + Billing"
+    ]
+  },
+  "Data Explorer Clusters": {
+    "name": "Azure Data Explorer",
+    "aliases": [
+      "ADX",
+      "Kusto"
+    ]
+  },
+  "Data Factory": {
+    "name": "Azure Data Factory",
+    "aliases": [
+      "ADF"
+    ]
+  },
+  "Data Lake Storage Gen1": {
+    "name": "Azure Data Lake Storage Gen1",
+    "aliases": [
+      "ADLS",
+      "Data Lake"
+    ]
+  },
+  "Database MySQL Server": {
+    "name": "Azure Database for MySQL",
+    "aliases": [
+      "MySQL"
+    ]
+  },
+  "Database PostgreSQL Server": {
+    "name": "Azure Database for PostgreSQL",
+    "aliases": [
+      "PostgreSQL",
+      "Postgres"
+    ]
+  },
+  "Databricks": {
+    "name": "Azure Databricks",
+    "aliases": []
+  },
+  "Dataverse": {
+    "aliases": [
+      "CDS",
+      "Common Data Service"
+    ],
+    "name": "Microsoft Dataverse"
+  },
+  "Defender": {
+    "name": "Microsoft Defender for Cloud",
+    "aliases": [
+      "Azure Security Center",
+      "Security Center"
+    ]
+  },
+  "DevOps": {
+    "name": "Azure DevOps",
+    "aliases": [
+      "ADO",
+      "Azure Pipelines",
+      "Azure Repos",
+      "Azure Boards"
+    ]
+  },
+  "Digital Twins": {
+    "name": "Azure Digital Twins",
+    "aliases": []
+  },
+  "Disks": {
+    "name": "Azure Managed Disks",
+    "aliases": [
+      "Managed Disk",
+      "Disk"
+    ]
+  },
+  "DNS Private Resolver": {
+    "name": "Azure DNS Private Resolver",
+    "aliases": [
+      "Private Resolver"
+    ]
+  },
+  "DNS Zones": {
+    "name": "Azure DNS",
+    "aliases": [
+      "DNS Zone"
+    ]
+  },
+  "Entra Domain Services": {
+    "name": "Microsoft Entra Domain Services",
+    "aliases": [
+      "Azure AD DS",
+      "AAD Domain Services"
+    ]
+  },
+  "Entra ID Protection": {
+    "name": "Microsoft Entra ID Protection",
+    "aliases": [
+      "Identity Protection"
+    ]
+  },
+  "Entra Identity": {
+    "name": "Microsoft Entra ID",
+    "aliases": [
+      "Entra ID",
+      "Azure AD",
+      "AAD",
+      "Entra"
+    ]
+  },
+  "Entra Privileged Identity Management": {
+    "name": "Microsoft Entra Privileged Identity Management",
+    "aliases": [
+      "PIM",
+      "Entra PIM"
+    ]
+  },
+  "Event Grid Topics": {
+    "name": "Azure Event Grid",
+    "aliases": [
+      "Event Grid",
+      "Event Grid Topic"
+    ]
+  },
+  "Event Hubs": {
+    "name": "Azure Event Hubs",
+    "aliases": [
+      "Event Hub"
+    ]
+  },
+  "ExpressRoute Circuits": {
+    "name": "Azure ExpressRoute",
+    "aliases": [
+      "ExpressRoute",
+      "ExpressRoute Circuit"
+    ]
+  },
+  "Firewalls": {
+    "name": "Azure Firewall",
+    "aliases": [
+      "Firewall"
+    ]
+  },
+  "Form Recognizers": {
+    "name": "Azure AI Document Intelligence",
+    "aliases": [
+      "Form Recognizer",
+      "Document Intelligence"
+    ]
+  },
+  "Front Door and CDN Profiles": {
+    "name": "Azure Front Door",
+    "aliases": [
+      "Front Door",
+      "AFD"
+    ]
+  },
+  "Function Apps": {
+    "name": "Azure Functions",
+    "aliases": [
+      "Functions",
+      "Function App"
+    ]
+  },
+  "Grafana": {
+    "name": "Azure Managed Grafana",
+    "aliases": []
+  },
+  "IoT Central Applications": {
+    "name": "Azure IoT Central",
+    "aliases": []
+  },
+  "IoT Hub": {
+    "name": "Azure IoT Hub",
+    "aliases": []
+  },
+  "Key Vaults": {
+    "name": "Azure Key Vault",
+    "aliases": [
+      "Key Vault",
+      "AKV"
+    ]
+  },
+  "Kubernetes Services": {
+    "name": "Azure Kubernetes Service",
+    "aliases": [
+      "AKS",
+      "Kubernetes Service"
+    ]
+  },
+  "Lighthouse": {
+    "name": "Azure Lighthouse",
+    "aliases": []
+  },
+  "Load Balancers": {
+    "name": "Azure Load Balancer",
+    "aliases": [
+      "Load Balancer"
+    ]
+  },
+  "Load Testing": {
+    "name": "Azure Load Testing",
+    "aliases": []
+  },
+  "Log Analytics Workspaces": {
+    "name": "Log Analytics Workspace",
+    "aliases": [
+      "Log Analytics"
+    ]
+  },
+  "Logic Apps": {
+    "name": "Azure Logic Apps",
+    "aliases": [
+      "Logic App"
+    ]
+  },
+  "Managed Identities": {
+    "name": "Managed Identity",
+    "aliases": [
+      "MSI",
+      "User Assigned Managed Identity",
+      "System Assigned Managed Identity"
+    ]
+  },
+  "Management Groups": {
+    "name": "Management Group",
+    "aliases": []
+  },
+  "Maps Accounts": {
+    "name": "Azure Maps",
+    "aliases": []
+  },
+  "Migrate": {
+    "name": "Azure Migrate",
+    "aliases": []
+  },
+  "Monitor": {
+    "name": "Azure Monitor",
+    "aliases": []
+  },
+  "NAT": {
+    "name": "Azure NAT Gateway",
+    "aliases": [
+      "NAT Gateway"
+    ]
+  },
+  "NetApp Files": {
+    "name": "Azure NetApp Files",
+    "aliases": [
+      "ANF"
+    ]
+  },
+  "Network Security Groups": {
+    "name": "Network Security Group",
+    "aliases": [
+      "NSG"
+    ]
+  },
+  "Notification Hubs": {
+    "name": "Azure Notification Hubs",
+    "aliases": []
+  },
+  "OpenAI": {
+    "name": "Azure OpenAI",
+    "aliases": [
+      "Azure OpenAI Service",
+      "AOAI"
+    ]
+  },
+  "Policy": {
+    "name": "Azure Policy",
+    "aliases": []
+  },
+  "PowerApps": {
+    "aliases": [
+      "Canvas App",
+      "Model-driven App"
+    ],
+    "name": "Power Apps"
+  },
+  "PowerAutomate": {
+    "aliases": [
+      "Flow",
+      "Microsoft Flow",
+      "Cloud Flow"
+    ],
+    "name": "Power Automate"
+  },
+  "PowerBI": {
+    "aliases": [],
+    "name": "Power BI"
+  },
+  "PowerFx": {
+    "aliases": [],
+    "name": "Power Fx"
+  },
+  "PowerPages": {
+    "aliases": [
+      "Portals",
+      "Power Apps Portals"
+    ],
+    "name": "Power Pages"
+  },
+  "PowerPlatform": {
+    "aliases": [
+      "Power Platform"
+    ],
+    "name": "Microsoft Power Platform"
+  },
+  "Private Endpoint": [
+    "Private Endpoints"
+  ],
+  "Private Link": {
+    "name": "Azure Private Link",
+    "aliases": []
+  },
+  "Public IP Addresses": {
+    "name": "Public IP Address",
+    "aliases": [
+      "Public IP",
+      "PIP"
+    ]
+  },
+  "Purview Accounts": {
+    "name": "Microsoft Purview",
+    "aliases": [
+      "Purview"
+    ]
+  },
+  "Recovery Services Vaults": {
+    "name": "Recovery Services Vault",
+    "aliases": [
+      "RSV",
+      "Azure Site Recovery",
+      "ASR"
+    ]
+  },
+  "Relays": {
+    "name": "Azure Relay",
+    "aliases": [
+      "Service Bus Relay"
+    ]
+  },
+  "Resource Groups": {
+    "name": "Resource Group",
+    "aliases": [
+      "RG"
+    ]
+  },
+  "Route Tables": {
+    "name": "Route Table",
+    "aliases": [
+      "UDR",
+      "User Defined Routes"
+    ]
+  },
+  "Sentinel": {
+    "name": "Microsoft Sentinel",
+    "aliases": [
+      "Azure Sentinel",
+      "SIEM"
+    ]
+  },
+  "Service Bus": {
+    "name": "Azure Service Bus",
+    "aliases": [
+      "Service Bus Queue",
+      "Service Bus Topic"
+    ]
+  },
+  "Service Fabric Clusters": {
+    "name": "Azure Service Fabric",
+    "aliases": [
+      "Service Fabric"
+    ]
+  },
+  "Service Health": {
+    "name": "Azure Service Health",
+    "aliases": []
+  },
+  "SignalR": {
+    "name": "Azure SignalR Service",
+    "aliases": []
+  },
+  "Speech Services": {
+    "name": "Azure AI Speech",
+    "aliases": [
+      "Speech Service"
+    ]
+  },
+  "Spring Apps": {
+    "name": "Azure Spring Apps",
+    "aliases": [
+      "Spring Cloud"
+    ]
+  },
+  "SQL Database": {
+    "name": "Azure SQL Database",
+    "aliases": [
+      "Azure SQL",
+      "SQL DB"
+    ]
+  },
+  "SQL Managed Instance": {
+    "name": "Azure SQL Managed Instance",
+    "aliases": [
+      "SQL MI"
+    ]
+  },
+  "SQL Server": [
+    "SQL Server on Azure VM"
+  ],
+  "Static Apps": {
+    "name": "Azure Static Web Apps",
+    "aliases": [
+      "Static Web Apps",
+      "SWA"
+    ]
+  },
+  "Storage Accounts": {
+    "name": "Storage Account",
+    "aliases": [
+      "Azure Storage",
+      "Blob Storage",
+      "Blob Container"
+    ]
+  },
+  "Storage Explorer": {
+    "name": "Azure Storage Explorer",
+    "aliases": []
+  },
+  "Stream Analytics Jobs": {
+    "name": "Azure Stream Analytics",
+    "aliases": [
+      "Stream Analytics"
+    ]
+  },
+  "Subscriptions": {
+    "name": "Subscription",
+    "aliases": [
+      "Azure Subscription"
+    ]
+  },
+  "Synapse Analytics": {
+    "name": "Azure Synapse Analytics",
+    "aliases": [
+      "Synapse"
+    ]
+  },
+  "Traffic Manager Profiles": {
+    "name": "Azure Traffic Manager",
+    "aliases": [
+      "Traffic Manager"
+    ]
+  },
+  "Translator Text": {
+    "name": "Azure AI Translator",
+    "aliases": [
+      "Translator"
+    ]
+  },
+  "Virtual Machine": {
+    "name": "Azure Virtual Machine",
+    "aliases": [
+      "VM",
+      "Virtual Machines",
+      "Azure VM"
+    ]
+  },
+  "Virtual Network Gateways": {
+    "name": "Azure VPN Gateway",
+    "aliases": [
+      "VPN Gateway",
+      "Virtual Network Gateway",
+      "VNG"
+    ]
+  },
+  "Virtual Networks": {
+    "name": "Azure Virtual Network",
+    "aliases": [
+      "VNet",
+      "Virtual Network"
+    ]
+  },
+  "Virtual WANs": {
+    "name": "Azure Virtual WAN",
+    "aliases": [
+      "vWAN",
+      "Virtual WAN"
+    ]
+  },
+  "VM Scale Sets": {
+    "name": "Virtual Machine Scale Sets",
+    "aliases": [
+      "VMSS",
+      "Scale Set"
+    ]
+  },
+  "Web Application Firewall Policies (WAF)": {
+    "name": "Azure Web Application Firewall",
+    "aliases": [
+      "WAF",
+      "WAF Policy"
+    ]
+  },
+  "Windows Virtual Desktop": {
+    "name": "Azure Virtual Desktop",
+    "aliases": [
+      "AVD",
+      "WVD"
+    ]
+  }
+}
