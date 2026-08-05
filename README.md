@@ -1,6 +1,11 @@
 # cloud-diagram-icons
 
+[![GitHub stars](https://img.shields.io/github/stars/jpsantoscosta/cloud-diagram-icons?style=social)](https://github.com/jpsantoscosta/cloud-diagram-icons/stargazers)
+[![npm](https://img.shields.io/npm/v/cloud-diagram-icons-mcp)](https://www.npmjs.com/package/cloud-diagram-icons-mcp)
+
 The icon lookup layer for AI-generated draw.io diagrams. Microsoft first, multi-cloud later.
+
+If this repository is useful to you, please give it a star. It helps other people find it.
 
 LLMs generating draw.io XML have no way to look up the correct modern icon for a named cloud service. This repo provides [`icons.json`](icons.json), a machine-readable index that maps service names (official names, portal names, acronyms, legacy names) to exact draw.io style strings. Combined with the official [draw.io MCP tooling](https://github.com/jgraph/drawio-mcp), it lets Claude, Copilot, or any MCP-capable model render Azure diagrams with the real portal icons.
 
@@ -70,8 +75,13 @@ A working example produced this way: [`examples/demo.drawio`](examples/demo.draw
 - Gap estates with embedded icons: M365, Dynamics 365, Microsoft Fabric
 - AWS and GCP, using the same provider-aware schema
 
-## Licensing and credits
+## Related projects
+
+This project deliberately does one thing: machine-readable icon lookup. For the other pieces of the picture:
+
+- [jgraph/drawio-mcp](https://github.com/jgraph/drawio-mcp): the official draw.io MCP tooling that builds, previews, and exports the diagrams. This project is designed to compose with it, not replace it.
+- [dwarfered/azure-architecture-icons-for-drawio](https://github.com/dwarfered/azure-architecture-icons-for-drawio): maintained one-click Azure and M365 shape libraries for humans working in the draw.io editor. If you want drag-and-drop icon palettes rather than AI lookup, that is the right tool.
+
+## Licensing
 
 The referenced icons are Microsoft's property, provided under Microsoft's terms of use, which permit their use in architecture diagrams, training materials, and documentation. This project claims no ownership of any icon. `builtin` entries redistribute nothing (they are path strings into draw.io's own assets).
-
-Built to compose with the official [draw.io MCP project](https://github.com/jgraph/drawio-mcp) by JGraph. If you want ready-made human shape libraries for draw.io, see [dwarfered/azure-architecture-icons-for-drawio](https://github.com/dwarfered/azure-architecture-icons-for-drawio).
