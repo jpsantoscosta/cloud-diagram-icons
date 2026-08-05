@@ -13,7 +13,7 @@ LLMs generating draw.io XML have no way to look up the correct modern icon for a
 
 ## What's in the index
 
-766 Azure and Power Platform entries generated from draw.io's builtin `azure2` shape library, with curated official names and aliases on top:
+846 entries: 766 Azure and Power Platform icons referenced from draw.io's builtin `azure2` shape library, plus 80 icons for the estates draw.io does not bundle (Dynamics 365, Microsoft Fabric items, Microsoft Entra product family, current Power Platform), embedded from Microsoft's official packs. Curated official names and aliases sit on top:
 
 ```json
 {
@@ -28,8 +28,9 @@ LLMs generating draw.io XML have no way to look up the correct modern icon for a
 }
 ```
 
-- `ref: "builtin"` entries reference draw.io's own bundled assets by path. Nothing is redistributed and the whole index stays around 200 KB.
-- `ref: "embedded"` entries (planned, for estates draw.io lacks: M365, Dynamics 365, Microsoft Fabric) will carry base64 SVG from Microsoft's official icon packs.
+- `ref: "builtin"` entries reference draw.io's own bundled assets by path. Nothing is redistributed and they cost kilobytes.
+- `ref: "embedded"` entries carry base64 SVG from Microsoft's official packs, for estates draw.io does not bundle. Where a pack duplicates a builtin icon, the builtin reference wins.
+- Fabric item names are estate-qualified (`Fabric SQL Database`) because several are distinct products that share a name with an Azure service.
 - Names follow official Microsoft product naming ("Microsoft Sentinel", "Azure Kubernetes Service"); draw.io's shorter builtin titles are kept as searchable aliases, alongside common shorthand ("AKS", "ADF") and legacy names ("Azure AD" resolves to Microsoft Entra ID).
 
 ## Using a style string
@@ -42,13 +43,22 @@ Any entry's `style` value drops straight into a draw.io `mxCell`:
 </mxCell>
 ```
 
-## Rebuilding the index
+## Icon mirror
+
+[`icons/microsoft/`](icons/microsoft) holds a categorised, sanitised mirror of the official Microsoft packs behind the embedded entries, with [`icons/manifest.json`](icons/manifest.json) recording each pack's source URL, checksum, and sync date alongside a sha256 per file. Useful on its own for slides, wikis, and docs; hotlink individual files through a CDN such as jsDelivr.
+
+Every mirrored SVG is stripped of scripts, event handlers, remote references, and embedded HTML before it lands, because hotlinked SVGs execute in the consuming page.
+
+Per-estate draw.io libraries live in [`libraries/`](libraries) and load into the editor via **File > Open Library From > URL**.
+
+## Rebuilding
 
 ```powershell
-pwsh scripts/build-index.ps1
+pwsh scripts/build-index.ps1      # builtin Azure entries, from jgraph/drawio
+pwsh scripts/build-gap-icons.ps1  # gap estates, mirror, and per-estate libraries
 ```
 
-The script parses `Sidebar-Azure2.js` from [jgraph/drawio](https://github.com/jgraph/drawio) and merges curated names and aliases from [`data/aliases/azure.json`](data/aliases/azure.json). A monthly GitHub Action re-runs it and opens a PR when draw.io ships new icons, so the index does not go stale.
+The first parses `Sidebar-Azure2.js` from [jgraph/drawio](https://github.com/jgraph/drawio) and merges curated names and aliases from [`data/aliases/azure.json`](data/aliases/azure.json). The second downloads Microsoft's official packs from an allowlist of Microsoft domains, sanitises and gates them, and refreshes the mirror and embedded entries. Each owns its own entry type and preserves the other's, so they can run in either order. A monthly GitHub Action runs both and opens a pull request when anything upstream changes, so the index does not go stale.
 
 ## Using with AI (MCP)
 
@@ -72,7 +82,6 @@ A working example produced this way: [`examples/demo.drawio`](examples/demo.draw
 
 ## Roadmap
 
-- Gap estates with embedded icons: M365, Dynamics 365, Microsoft Fabric
 - AWS and GCP, using the same provider-aware schema
 
 ## Related projects

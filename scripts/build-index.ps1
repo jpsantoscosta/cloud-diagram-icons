@@ -140,13 +140,25 @@ if ($unmatched) { Write-Warning "Alias keys with no matching builtin title: $($u
 $dupes = $icons | Group-Object { "$($_.category)/$($_.name)" } | Where-Object Count -gt 1
 if ($dupes) { Write-Warning "Duplicate category/name pairs: $(($dupes.Name | Select-Object -First 10) -join '; ')" }
 
+$indexPath = Join-Path $RepoRoot $OutFile
+
+# icons.json is written by two generators: this one owns the `builtin` entries,
+# build-gap-icons.ps1 owns the `embedded` ones. Each preserves the other's, so
+# they are idempotent and can run in either order.
+$embedded = @()
+if (Test-Path $indexPath) {
+    $existing = Get-Content $indexPath -Raw | ConvertFrom-Json
+    $embedded = @($existing.icons | Where-Object { $_.ref -eq 'embedded' })
+    if ($embedded.Count -gt 0) { Write-Host "Preserving $($embedded.Count) embedded entries from other estates" }
+}
+foreach ($e in $embedded) { $icons.Add($e) }
+
 $index = [ordered]@{
     generated = (Get-Date -AsUTC -Format 'yyyy-MM-ddTHH:mm:ssZ')
     notice    = 'Azure entries reference draw.io''s bundled azure2 assets by path and redistribute nothing. Icons are Microsoft property, permitted for use in architecture diagrams under Microsoft''s terms of use.'
     count     = $icons.Count
     icons     = $icons
 }
-$indexPath = Join-Path $RepoRoot $OutFile
 
 # Only rewrite when content changed, ignoring the volatile generated timestamp,
 # so the monthly Action opens a PR only for real icon changes and "generated"

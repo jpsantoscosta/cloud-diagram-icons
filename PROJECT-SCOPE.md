@@ -42,7 +42,7 @@ Rationale: descriptive beats brandable for a new project (search: "cloud diagram
 - **No Copilot Extension.** GitHub sunset GitHub App-based Copilot Extensions on 10 Nov 2025 in favour of MCP. MCP is the single integration path for Copilot, Claude, Cursor, VS Code, Visual Studio, and Copilot CLI.
 - **No third-party icon sources.** Azure icon references point at draw.io's own built-in assets (paths, not copies). Supplemental icons for gaps come exclusively from Microsoft's official downloadable SVG packs.
 - **No icon ownership claims.** Icons remain Microsoft's property under Microsoft's terms of use, which permit copying, distribution, and use in architecture diagrams and documentation. The icon mirror (D4) redistributes on that permitted-use basis, stated plainly in the README per source pack. Azure lookup entries redistribute nothing at all (path strings into draw.io's own bundled assets).
-- **No web app in v1.** Deferred until real demand exists (see section 8). The stdio MCP server runs locally on the user's machine and uses the user's own AI subscription, so there is no hosting cost and no token-cost problem to solve.
+- **No web app.** The stdio MCP server runs locally on the user's machine and uses the user's own AI subscription, so there is no hosting cost and no token-cost problem to solve.
 
 ## 4. Deliverables
 
@@ -125,15 +125,15 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 - [x] 1. Validation test (section 5) — passed 04 Aug 2026, see decisions log
 - [x] 2. Index generator → icons.json for Azure builtin entries — scripts/build-index.ps1, 766 entries, 04 Aug 2026
 - [x] 3. Naming and alias quality pass — 117 curated entries, official product names canonical; refined continuously as usage reveals gaps
-- [ ] 4. Gap converter → embedded entries + supplemental libraries for M365/Dynamics/Power Platform — deferred until the core lookup path is proven in use
-- [ ] 5. Icon mirror (D4): icons/ tree, manifest.json, sanitisation + sanity gates — deferred with step 4
+- [x] 4. Gap converter → embedded entries + supplemental libraries — scripts/build-gap-icons.ps1, 05 Aug 2026: Dynamics 365 (16), Microsoft Fabric items (57), Entra product family (7), current Power Platform (8); 80 added to the index after preferring builtin references, plus a draw.io library per estate. M365 handled per the decisions log
+- [x] 5. Icon mirror (D4): icons/microsoft tree with manifest.json (source, pack sha256, per-file sha256, sync date), SVG sanitisation and count/size/parse gates — 05 Aug 2026
 - [x] 6. GitHub Action (monthly diff against jgraph/drawio, PR-based, loud failure) — verified live 05 Aug 2026; Microsoft pack diffing joins when step 4 is undeferred
 - [x] 7. Repo hardening: SHA-pinned Actions, Dependabot, branch protection on main (PRs required, no force-push, linear history), secret scanning with push protection, Dependabot security updates, private vulnerability reporting, read-only default workflow token, SECURITY.md and style-allowlist validation at both trust boundaries — 05 Aug 2026
 - [x] 8. Repo polish: README, licensing notice, credits to drawio-mcp and community libraries — 05 Aug 2026
-- [ ] 9. Publish announcement / blog coverage — repository public since 05 Aug 2026; written coverage pending
+- [ ] 9. Public announcement — repository public since 05 Aug 2026; announcement pending
 - [x] 10. Icon MCP server on top of icons.json — published as cloud-diagram-icons-mcp; 0.1.1 (current `latest`, 05 Aug 2026) carries the style-allowlist validation, verified by running the shipped validator against the shipped snapshot. Unit tests and stdio smoke test pass
 - [x] 11. Skill / instructions layer — Claude skill and Copilot instructions file, 05 Aug 2026
-- [ ] 12. Blog coverage, GitHub MCP Registry listing, community activity entries — pending
+- [ ] 12. GitHub MCP Registry listing, community activity entries — pending
 
 ## 7. Known challenges and decisions log
 
@@ -165,6 +165,11 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 | Icon pack version drift | The index generator resolves the current upstream source at run time; the refresh Action fails loudly rather than shipping stale data |
 | Refresh Action must not open no-op PRs | The generator skips rewriting icons.json when only the generated timestamp would change, so PRs open only for real icon changes |
 | Index style strings are untrusted input | Verified in the draw.io editor: a style whose `image=` names an external host causes a real network request when the diagram is opened, so a tampered index would beacon on every viewer. Both boundaries now enforce an allowlist (relative `img/lib/...svg` path, or inline `data:image/svg+xml`): the generator aborts the build rather than indexing anything else, and the MCP server drops unsafe entries on load and warns. Verified against a simulated compromised upstream source |
+| M365 pack excluded from the index | Verified across the whole pack: every folder is a colourway variant (Microsoft Blue, Teams Purple, SharePoint Teal, Planner Green) of one ~155-symbol UI glyph set, with PNG duplicates. There are no Teams, SharePoint, or Outlook product logos to index, so adding it would fill the index with entries like "Arrow Down" that no one asks an assistant to diagram. Revisit if Microsoft publishes a successor pack with product logos |
+| Fabric item names are estate-qualified | Fabric ships items named "Data Factory", "SQL Database", and "Dashboard" whose icons are distinct products from the identically named Azure services. Bare names both collided in search and were discarded as duplicates of the Azure entry, losing the Fabric icon entirely. Names are prefixed ("Fabric SQL Database"); the bare words remain in `tags`, so an unqualified query still finds the item, ranked below the Azure service it is not |
+| Builtin reference preferred over embedded | When a gap pack ships an icon whose name or alias is already served by a builtin entry, the embedded entry is dropped: builtin costs kilobytes and redistributes nothing. This removed 8 duplicates, most of the Power Platform pack, which the builtin library already covers |
+| Two generators, one index | build-index.ps1 owns `builtin` entries and build-gap-icons.ps1 owns `embedded` ones; each preserves the other's on write, so they are idempotent and order-independent |
+| Mirror staged before commit | The gap pipeline holds every sanitised icon in memory and writes nothing until all sources pass their gates, so a failed or restructured upstream cannot leave a half-updated mirror on disk |
 | Branch protection admin exemption | Retained deliberately. The repository has a single collaborator with admin rights, so the exemption applies to the maintainer alone; it keeps routine maintenance direct while the rules still govern automated pull requests and any future collaborator. Revisit if collaborators are added |
 | Hostile index must not fall back silently | Transport and parse failures fall back to the bundled snapshot; an index that loads but fails validation raises instead, because silently serving the snapshot would mask tampering |
 | Composed end-to-end test | Passed 05 Aug 2026: a Claude Code session with @drawio/mcp + cloud-diagram-icons-mcp resolved five services through the icon server, produced builtin style strings, and the diagram rendered correctly in the draw.io editor (examples/demo.drawio). When prompted explicitly the model composes the servers correctly; the skill/instructions layer exists to make that behaviour automatic |
@@ -179,7 +184,6 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 ## 8. Future roadmap (not v1)
 
 - **AWS icons**: draw.io also bundles AWS shape libraries (builtin ref type likely works there too, verify coverage first). Then GCP.
-- **Web app** only on evidence of demand. If built: static hosting free tier + serverless functions + CDN for icon data; funding via bring-your-own-key with a capped free tier. Decision made with real usage numbers, not guesses.
 
 ## 9. Success measures
 
@@ -187,7 +191,7 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 - Mirror: manifest shows all sources synced within the last month, every month; zero unsanitised SVGs ever merged
 - Phase 2: an AI assistant generates a diagram with correct modern icons using the two composed MCP servers — **achieved 05 Aug 2026** (see decisions log)
 - Community: stars, shares, links from the drawio-mcp ecosystem and Microsoft community
-- Ecosystem visibility: written technical coverage and community programme activity entries
+- Ecosystem visibility: registry listing and community programme activity entries
 
 ## 10. Build conventions
 

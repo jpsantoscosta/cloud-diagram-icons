@@ -19,9 +19,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Rebuild icons.json from jgraph/drawio
+      - name: Rebuild builtin entries from jgraph/drawio
         shell: pwsh
         run: ./scripts/build-index.ps1
+
+      - name: Refresh gap estates and icon mirror from Microsoft packs
+        shell: pwsh
+        run: ./scripts/build-gap-icons.ps1
 
       - name: Summarise changes
         id: diff
@@ -45,11 +49,13 @@ jobs:
           commit-message: 'Refresh icons.json from jgraph/drawio'
           title: 'Refresh icon index'
           body: |
-            Automated monthly refresh of `icons.json` against `Sidebar-Azure2.js` in jgraph/drawio.
+            Automated monthly refresh: builtin entries against `Sidebar-Azure2.js` in jgraph/drawio,
+            and the gap estates and icon mirror against Microsoft's official packs.
 
             Changed files: ${{ steps.diff.outputs.changed }}
 
-            Review the diff for renamed or removed icons before merging.
+            Review the diff for renamed or removed icons before merging. Every mirrored SVG has
+            passed sanitisation and the count, size, and parse gates, or the run would have failed.
           delete-branch: true
 
       - name: Open issue on failure

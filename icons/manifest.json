@@ -1,0 +1,574 @@
+{
+  "generated": "2026-08-05T18:59:03Z",
+  "notice": "Icons are Microsoft property, mirrored here on the permitted-use basis stated in each source pack's terms: they may be copied, distributed, and displayed for use in architecture diagrams, training materials, and documentation.",
+  "estates": {
+    "dynamics": {
+      "label": "Dynamics 365 icons",
+      "source": "https://download.microsoft.com/download/498606aa-6d27-4f13-aa5c-1401078c153b/Dynamics-365-icons-scalable.zip",
+      "reference": "https://learn.microsoft.com/en-us/dynamics365/get-started/icons",
+      "pack_sha256": "f5f4d96aaa637b71e47136cc74e9a4a69b8a81f7e43c1c5756f00b5cea9ffe02",
+      "synced": "2026-08-05T18:59:03Z",
+      "count": 16,
+      "files": [
+        {
+          "name": "Dynamics 365 Business Central",
+          "path": "microsoft/dynamics/app/dynamics-365-business-central.svg",
+          "source": "Dynamics 365 App Icons/BusinessCentral_scalable.svg",
+          "sha256": "5effb9327ab3914ba1a4660c1a95282253ba6fb911580d227c62a222a4a76be8"
+        },
+        {
+          "name": "Dynamics 365 Commerce",
+          "path": "microsoft/dynamics/app/dynamics-365-commerce.svg",
+          "source": "Dynamics 365 App Icons/Commerce_scalable.svg",
+          "sha256": "afc13a8f1cc879527d82284d948b042ea5f2d1b6e949da08290e04ce5b9d09f9"
+        },
+        {
+          "name": "Dynamics 365 Contact Center",
+          "path": "microsoft/dynamics/app/dynamics-365-contact-center.svg",
+          "source": "Dynamics 365 App Icons/ContactCenter_scalable.svg",
+          "sha256": "8b1a36486dbcdce1442a9915dbed2140c660205c9916d4603f49e08b40807778"
+        },
+        {
+          "name": "Dynamics 365 Customer Insights",
+          "path": "microsoft/dynamics/app/dynamics-365-customer-insights.svg",
+          "source": "Dynamics 365 App Icons/CustomerInsights_scalable.svg",
+          "sha256": "dbdaedf0ada05ca316e7b42b7d0d5d74ab51da234031f97a23cb8dbec7981bf0"
+        },
+        {
+          "name": "Dynamics 365 Customer Services",
+          "path": "microsoft/dynamics/app/dynamics-365-customer-services.svg",
+          "source": "Dynamics 365 App Icons/CustomerServices_scalable.svg",
+          "sha256": "ecea20ecc386e7b92b22b79fcbad0d1c0672d6ed6df62d32fb08a6963ab9741a"
+        },
+        {
+          "name": "Dynamics 365 Customer Voice",
+          "path": "microsoft/dynamics/app/dynamics-365-customer-voice.svg",
+          "source": "Dynamics 365 App Icons/CustomerVoice_scalable.svg",
+          "sha256": "0039b113f11ed87aa04ddd132b175b99c2c466b2df1577b2d87deaa094f26d1f"
+        },
+        {
+          "name": "Dynamics 365 Field Service",
+          "path": "microsoft/dynamics/app/dynamics-365-field-service.svg",
+          "source": "Dynamics 365 App Icons/FieldService_scalable.svg",
+          "sha256": "b2d85d1a9abb56524483c5c56a89bff50ee10f6668e12354da87242c228b8177"
+        },
+        {
+          "name": "Dynamics 365 Finance",
+          "path": "microsoft/dynamics/app/dynamics-365-finance.svg",
+          "source": "Dynamics 365 App Icons/Finance_scalable.svg",
+          "sha256": "ed70dcb0929202676654afe9455f4647f918ca92b5576ae447a86cf341461cab"
+        },
+        {
+          "name": "Dynamics 365 Finance Operations",
+          "path": "microsoft/dynamics/app/dynamics-365-finance-operations.svg",
+          "source": "Dynamics 365 App Icons/FinanceOperations_scalable.svg",
+          "sha256": "cb3c76a254571104fc12adc666a52fa53ce09bd7322ea790fc925976c17a63f7"
+        },
+        {
+          "name": "Dynamics 365 Human Resources",
+          "path": "microsoft/dynamics/app/dynamics-365-human-resources.svg",
+          "source": "Dynamics 365 App Icons/HumanResources_scalable.svg",
+          "sha256": "279cfdfd29d8bb87c69a17666a0b1da0f34dc4cc545b4248c80a9ef3a28f2091"
+        },
+        {
+          "name": "Dynamics 365 Intelligent Order Management",
+          "path": "microsoft/dynamics/app/dynamics-365-intelligent-order-management.svg",
+          "source": "Dynamics 365 App Icons/IntelligentOrderManagement_scalable.svg",
+          "sha256": "94a5fdb93f524b3fe44367ceff1d862522fee51441803ecbd7bb3400c380dd88"
+        },
+        {
+          "name": "Dynamics 365 Project Operations",
+          "path": "microsoft/dynamics/app/dynamics-365-project-operations.svg",
+          "source": "Dynamics 365 App Icons/ProjectOperations_scalable.svg",
+          "sha256": "9eb30c022127faf8576be58dc9fd7c2f7f8787e283e77d423f8b72015566ddc2"
+        },
+        {
+          "name": "Dynamics 365 Sales",
+          "path": "microsoft/dynamics/app/dynamics-365-sales.svg",
+          "source": "Dynamics 365 App Icons/Sales_scalable.svg",
+          "sha256": "af510c3f019faab2488dd8bdc2d0c358188ba242aec6ce6410663be5c8cfd3f4"
+        },
+        {
+          "name": "Dynamics 365 Sales Insights",
+          "path": "microsoft/dynamics/app/dynamics-365-sales-insights.svg",
+          "source": "Dynamics 365 App Icons/SalesInsights_scalable.svg",
+          "sha256": "cd66eedebd23e5d00f35701fc8f25dbaa2d52bea78ff3c700359e7caf034f58a"
+        },
+        {
+          "name": "Dynamics 365 Supply Chain Management",
+          "path": "microsoft/dynamics/app/dynamics-365-supply-chain-management.svg",
+          "source": "Dynamics 365 App Icons/SupplyChainManagement_scalable.svg",
+          "sha256": "4590d6037d9ff7b2eb255b90d36547a4e29cfd1690444de741a29a1a9057d8a6"
+        },
+        {
+          "name": "Dynamics 365",
+          "path": "microsoft/dynamics/product-family/dynamics-365.svg",
+          "source": "Dynamics 365 Product Family Icons/Dynamics365_scalable.svg",
+          "sha256": "5017e931a0f5e724247a9c49e15e22bb22e252d5343e0a40f7f38366d2aeb388"
+        }
+      ]
+    },
+    "power-platform": {
+      "label": "Microsoft Power Platform icons",
+      "source": "https://download.microsoft.com/download/498606aa-6d27-4f13-aa5c-1401078c153b/Power-Platform-icons-scalable.zip",
+      "reference": "https://learn.microsoft.com/en-us/power-platform/guidance/icons",
+      "pack_sha256": "d5abafebbce553690caf7b42dd14b8335bf2c0dfc09f46bd9ac8041187da2c3a",
+      "synced": "2026-08-05T18:59:03Z",
+      "count": 8,
+      "files": [
+        {
+          "name": "Microsoft Agent 365",
+          "path": "microsoft/power-platform/product/microsoft-agent-365.svg",
+          "source": "Agent365_scalable.svg",
+          "sha256": "7d7988f5d29d3d3b425bdbb1ebacdd32d74a3e0819a177ed389a99ed73cb0ed9"
+        },
+        {
+          "name": "Microsoft Copilot Studio",
+          "path": "microsoft/power-platform/product/microsoft-copilot-studio.svg",
+          "source": "CopilotStudio_scalable.svg",
+          "sha256": "c614fa6b9b7d33048c6c4efcdd508e5b7818d296cbd1cd7d8848bb2dd1be4fd0"
+        },
+        {
+          "name": "AI Builder",
+          "path": "microsoft/power-platform/product/ai-builder.svg",
+          "source": "Power Platform/AIBuilder_scalable.svg",
+          "sha256": "09354060aae6bfd903f3ff8246e90fce8514f4c56c603e676931fd99d338cfa8"
+        },
+        {
+          "name": "Microsoft Dataverse",
+          "path": "microsoft/power-platform/product/microsoft-dataverse.svg",
+          "source": "Power Platform/Dataverse_scalable.svg",
+          "sha256": "df71c0111148d116515a02c5cb07483caad2bcb779664fa16fd837a4709504ab"
+        },
+        {
+          "name": "Power Apps",
+          "path": "microsoft/power-platform/product/power-apps.svg",
+          "source": "Power Platform/PowerApps_scalable.svg",
+          "sha256": "c357907ad0a2d24a6d8c82b23fe4d2aaa4a4524076991f74770fc043a4cc455a"
+        },
+        {
+          "name": "Power Automate",
+          "path": "microsoft/power-platform/product/power-automate.svg",
+          "source": "Power Platform/PowerAutomate_scalable.svg",
+          "sha256": "2025db7bb3feec49d75681934b8561fb958cf11bdf0e2acf6e2b28db5c755e8d"
+        },
+        {
+          "name": "Power Pages",
+          "path": "microsoft/power-platform/product/power-pages.svg",
+          "source": "Power Platform/PowerPages_scalable.svg",
+          "sha256": "7fdc8facba1b64c4e30fbed3d331ecab78746d0d29c29bae593b18788e870631"
+        },
+        {
+          "name": "Microsoft Power Platform",
+          "path": "microsoft/power-platform/product/microsoft-power-platform.svg",
+          "source": "Power Platform/PowerPlatform_scalable.svg",
+          "sha256": "c58871d6adac53a51512341e65055d0ec12f29948a001666c11dc7b5bb5fe142"
+        }
+      ]
+    },
+    "entra": {
+      "label": "Microsoft Entra architecture icons",
+      "source": "https://download.microsoft.com/download/3/1/a/31a56038-856a-4489-88e4-ee5a1c4352be/Microsoft%20Entra%20architecture%20icons%20-%20Oct%202023.zip",
+      "reference": "https://learn.microsoft.com/en-us/entra/architecture/architecture-icons",
+      "pack_sha256": "4e07536706a2d092e6524e5417e2c861333fdbdb41c36f78d44dfa07ccc5eedc",
+      "synced": "2026-08-05T18:59:03Z",
+      "count": 7,
+      "files": [
+        {
+          "name": "Microsoft Entra ID",
+          "path": "microsoft/entra/product/microsoft-entra-id.svg",
+          "source": "Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra ID color icon.svg",
+          "sha256": "efd9f54562bfb78bf3c77aecdd5fc31b61fce8a1cec78c4370b41fc470e54eda"
+        },
+        {
+          "name": "Microsoft Entra ID Governance",
+          "path": "microsoft/entra/product/microsoft-entra-id-governance.svg",
+          "source": "Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra ID Governance color icon.svg",
+          "sha256": "b19ae8a696a9c351444d1ae37602a29b8ac2e29a1779089d436f09feb61249e3"
+        },
+        {
+          "name": "Microsoft Entra Internet Access",
+          "path": "microsoft/entra/product/microsoft-entra-internet-access.svg",
+          "source": "Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra Internet Access color icon.svg",
+          "sha256": "9fce0b0555ebadb7d86480e0b7f2c37baff9a3c32cb5fee074b314401aec14af"
+        },
+        {
+          "name": "Microsoft Entra Private Access",
+          "path": "microsoft/entra/product/microsoft-entra-private-access.svg",
+          "source": "Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra Private Access color icon.svg",
+          "sha256": "63ff1e74681b1e9d3226c86c6bd278a0b38b6d3d5ea4414d37415ce46d7c960b"
+        },
+        {
+          "name": "Microsoft Entra Product Family",
+          "path": "microsoft/entra/product/microsoft-entra-product-family.svg",
+          "source": "Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra Product Family.svg",
+          "sha256": "6d7f94e6132c025cb0304d0b1ad0a8beb968b1b6ce0e22f33609b86fa64a450f"
+        },
+        {
+          "name": "Microsoft Entra Verified ID",
+          "path": "microsoft/entra/product/microsoft-entra-verified-id.svg",
+          "source": "Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra Verified ID color icon.svg",
+          "sha256": "ae1f6e9472ca807c1234b100b82a4122d0f7630bd47b4909528f0d88ba7c3423"
+        },
+        {
+          "name": "Microsoft Entra Workload ID",
+          "path": "microsoft/entra/product/microsoft-entra-workload-id.svg",
+          "source": "Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra Workload ID color icon.svg",
+          "sha256": "f060c986a7f0bd0761c210225dc5db6a8bafa18eb1ea411f3417b9a0dadefe51"
+        }
+      ]
+    },
+    "fabric": {
+      "label": "Microsoft Fabric icons",
+      "source": "https://raw.githubusercontent.com/microsoft/fabric-samples/main/docs-samples/Icons.zip",
+      "reference": "https://learn.microsoft.com/en-us/fabric/fundamentals/icons",
+      "pack_sha256": "fc22e71b0545ed15e22c53f16bf4fb06ffe72daabd3c90a947a6e481c9675e6b",
+      "synced": "2026-08-05T18:59:03Z",
+      "count": 57,
+      "files": [
+        {
+          "name": "Fabric Apps",
+          "path": "microsoft/fabric/item/fabric-apps.svg",
+          "source": "v6.1.0/package/dist/svg/apps_48_item.svg",
+          "sha256": "7e6a11e7ac82b5f165cda8c62e8828a282eea71f238e1a6a9bb0f0a2a20bcb75"
+        },
+        {
+          "name": "Fabric Cohort",
+          "path": "microsoft/fabric/item/fabric-cohort.svg",
+          "source": "v6.1.0/package/dist/svg/cohort_48_item.svg",
+          "sha256": "6014c2791bc486a0e132f6720b646b6b73f8866c32d80ce9136c49ac0ac56352"
+        },
+        {
+          "name": "Fabric Copy Job",
+          "path": "microsoft/fabric/item/fabric-copy-job.svg",
+          "source": "v6.1.0/package/dist/svg/copy_job_48_item.svg",
+          "sha256": "4900dd9a47a2a5fe7893d8cd7dfe1b21de8d00e3bb784cd9f520d1744dd113fe"
+        },
+        {
+          "name": "Fabric Custom Streaming Connector",
+          "path": "microsoft/fabric/item/fabric-custom-streaming-connector.svg",
+          "source": "v6.1.0/package/dist/svg/custom_streaming_connector_48_item.svg",
+          "sha256": "3cc4a7a134c70d1b6c41158ad2c3d38921688b1aadad87872b7516865cf654e7"
+        },
+        {
+          "name": "Fabric Dashboard",
+          "path": "microsoft/fabric/item/fabric-dashboard.svg",
+          "source": "v6.1.0/package/dist/svg/dashboard_48_item.svg",
+          "sha256": "b65013c6786ac25ca27628d98ac5414501f7350c2f724b4f8366716624fa8b76"
+        },
+        {
+          "name": "Fabric Data Agent",
+          "path": "microsoft/fabric/item/fabric-data-agent.svg",
+          "source": "v6.1.0/package/dist/svg/data_agent_48_item.svg",
+          "sha256": "cc263e20fdb76f6bcde3a941f926e1cee6a07cee4407ed6374857b3354e60ab6"
+        },
+        {
+          "name": "Fabric Data Factory",
+          "path": "microsoft/fabric/item/fabric-data-factory.svg",
+          "source": "v6.1.0/package/dist/svg/data_factory_48_item.svg",
+          "sha256": "2caa919a620d1d064fcd61a8dc0234448c9d782396705a700066945babeb0c98"
+        },
+        {
+          "name": "Fabric Data Warehouse",
+          "path": "microsoft/fabric/item/fabric-data-warehouse.svg",
+          "source": "v6.1.0/package/dist/svg/data_warehouse_48_item.svg",
+          "sha256": "f1fb93c5c38b69b74c7086bca91626a1f57954b30abbd109ede412b735e0a691"
+        },
+        {
+          "name": "Fabric Dataflow",
+          "path": "microsoft/fabric/item/fabric-dataflow.svg",
+          "source": "v6.1.0/package/dist/svg/dataflow_48_item.svg",
+          "sha256": "37cab244cbff809996bd373dd08041045764579744f4d0e9d5b5121b3d3e488f"
+        },
+        {
+          "name": "Fabric Dataflow Gen2",
+          "path": "microsoft/fabric/item/fabric-dataflow-gen2.svg",
+          "source": "v6.1.0/package/dist/svg/dataflow_gen2_48_item.svg",
+          "sha256": "5291386e4344dbd5729c19805d75287fc04eed07ed74979d6b15355213a17aaf"
+        },
+        {
+          "name": "Fabric Datamart",
+          "path": "microsoft/fabric/item/fabric-datamart.svg",
+          "source": "v6.1.0/package/dist/svg/datamart_48_item.svg",
+          "sha256": "95b0094f2b28e1bf04936ae51907bbc4022db27b14f6f17fc6c8164b1949562d"
+        },
+        {
+          "name": "Fabric Environment",
+          "path": "microsoft/fabric/item/fabric-environment.svg",
+          "source": "v6.1.0/package/dist/svg/environment_48_item.svg",
+          "sha256": "d8f4f65b541bfe22614915ed2a317c39df42fbe9e781e1e31fed0df17dfc3a43"
+        },
+        {
+          "name": "Fabric Event House",
+          "path": "microsoft/fabric/item/fabric-event-house.svg",
+          "source": "v6.1.0/package/dist/svg/event_house_48_item.svg",
+          "sha256": "ccf6c4a7770eab8ac39cb9301bb5caec8b29fb5dd12c0bb75e93c810d76823ec"
+        },
+        {
+          "name": "Fabric Eventstream",
+          "path": "microsoft/fabric/item/fabric-eventstream.svg",
+          "source": "v6.1.0/package/dist/svg/eventstream_48_item.svg",
+          "sha256": "8c7bbef9bd2f2ecd1d00db305d7705a81855253f64b0c0615e8b74816c0febc0"
+        },
+        {
+          "name": "Fabric Experiments",
+          "path": "microsoft/fabric/item/fabric-experiments.svg",
+          "source": "v6.1.0/package/dist/svg/experiments_48_item.svg",
+          "sha256": "ee794562a7e24f0747cc6b6e71885daab56baa1f72efa64a336013ef7c7008e9"
+        },
+        {
+          "name": "Fabric Exploration",
+          "path": "microsoft/fabric/item/fabric-exploration.svg",
+          "source": "v6.1.0/package/dist/svg/exploration_48_item.svg",
+          "sha256": "b360b726f1422d4cf3a5f697655d7f0280587d49588f64eb1322d0b71a47b4a1"
+        },
+        {
+          "name": "Fabric External Dataflow",
+          "path": "microsoft/fabric/item/fabric-external-dataflow.svg",
+          "source": "v6.1.0/package/dist/svg/external_dataflow_48_item.svg",
+          "sha256": "a30f28119c60ecb5e68df06eaf19a3a26e7aaf8c0b2f3d28b2724124f6181c29"
+        },
+        {
+          "name": "Fabric External Datamart",
+          "path": "microsoft/fabric/item/fabric-external-datamart.svg",
+          "source": "v6.1.0/package/dist/svg/external_datamart_48_item.svg",
+          "sha256": "397e8b8eec470b41094af5a456140a1174b356c0a59d830cd556deca8bfb683e"
+        },
+        {
+          "name": "Fabric External Semantic Model",
+          "path": "microsoft/fabric/item/fabric-external-semantic-model.svg",
+          "source": "v6.1.0/package/dist/svg/external_semantic_model_48_item.svg",
+          "sha256": "364774a015f70b654750bd568589a39d81fbede7ab1b0763db63d655e90d67dd"
+        },
+        {
+          "name": "Fabric Function Set",
+          "path": "microsoft/fabric/item/fabric-function-set.svg",
+          "source": "v6.1.0/package/dist/svg/function_set_48_item.svg",
+          "sha256": "115f4e6b51b79d1b5013c8b09067cca377757a272aa35cde253ea6ea9d475bb7"
+        },
+        {
+          "name": "Fabric Generic Placeholder",
+          "path": "microsoft/fabric/item/fabric-generic-placeholder.svg",
+          "source": "v6.1.0/package/dist/svg/generic_placeholder_48_item.svg",
+          "sha256": "e45594b7f128f4c4ec1879eb9500f7a121df100ab675b9020e6222de45cc5fcc"
+        },
+        {
+          "name": "Fabric Graph Model Instance",
+          "path": "microsoft/fabric/item/fabric-graph-model-instance.svg",
+          "source": "v6.1.0/package/dist/svg/graph_model_instance_48_item.svg",
+          "sha256": "fb14f6a29d034e79cd948da745719b073a091145b80c2bdac1ca8ec801c0275a"
+        },
+        {
+          "name": "Fabric Graph Model Instance Queryset",
+          "path": "microsoft/fabric/item/fabric-graph-model-instance-queryset.svg",
+          "source": "v6.1.0/package/dist/svg/graph_model_instance_queryset_48_item.svg",
+          "sha256": "2dc7c880a2447d77a8dcceb4d44d8fb0751d15fe5e8ba1b4ef0b28e0220ad0a5"
+        },
+        {
+          "name": "Fabric Healthcare",
+          "path": "microsoft/fabric/item/fabric-healthcare.svg",
+          "source": "v6.1.0/package/dist/svg/healthcare_48_item.svg",
+          "sha256": "401c8213d4d70746fad71f94dc75986b4d5b6348df561352e516e3bd1b203909"
+        },
+        {
+          "name": "Fabric KQL Database",
+          "path": "microsoft/fabric/item/fabric-kql-database.svg",
+          "source": "v6.1.0/package/dist/svg/kql_database_48_item.svg",
+          "sha256": "5ef2f0b3532c6e2a5aa63cc76f44e78b0570aa474cbe0395610823e9e42cc5ba"
+        },
+        {
+          "name": "Fabric KQL Queryset",
+          "path": "microsoft/fabric/item/fabric-kql-queryset.svg",
+          "source": "v6.1.0/package/dist/svg/kql_queryset_48_item.svg",
+          "sha256": "730895f747e50a811a6ce49eee7444a954ede78f712652d5ef803f00b83618e7"
+        },
+        {
+          "name": "Fabric KQL Script",
+          "path": "microsoft/fabric/item/fabric-kql-script.svg",
+          "source": "v6.1.0/package/dist/svg/kql_script_48_item.svg",
+          "sha256": "1bc7c2b4180e13dafb4ca8ad65347b8a550a18899e2cace4018ab297560e2dac"
+        },
+        {
+          "name": "Fabric Lakehouse",
+          "path": "microsoft/fabric/item/fabric-lakehouse.svg",
+          "source": "v6.1.0/package/dist/svg/lakehouse_48_item.svg",
+          "sha256": "7f4ba4303e8f507d4ec8e47bc055bace80eb9715ccc58df40021b776a3c65f08"
+        },
+        {
+          "name": "Fabric Links",
+          "path": "microsoft/fabric/item/fabric-links.svg",
+          "source": "v6.1.0/package/dist/svg/links_48_item.svg",
+          "sha256": "938bee8a09b9ad6f70e1e525ac34d6d43c1332b9a75847e46b089561f5387746"
+        },
+        {
+          "name": "Fabric Metric Sets",
+          "path": "microsoft/fabric/item/fabric-metric-sets.svg",
+          "source": "v6.1.0/package/dist/svg/metric_sets_48_item.svg",
+          "sha256": "b7b9d1014033cad13413e26dbc35a19babd9f9bc8e3168655c452eb60fdc2a32"
+        },
+        {
+          "name": "Fabric Mirrored Generic Database",
+          "path": "microsoft/fabric/item/fabric-mirrored-generic-database.svg",
+          "source": "v6.1.0/package/dist/svg/mirrored_generic_database_48_item.svg",
+          "sha256": "a1b2d7cad2063b92b2de71d9a61d0981e44068beaa690351feaeb01a58173597"
+        },
+        {
+          "name": "Fabric Mobile Report",
+          "path": "microsoft/fabric/item/fabric-mobile-report.svg",
+          "source": "v6.1.0/package/dist/svg/mobile_report_48_item.svg",
+          "sha256": "148e7145dd549384903fbfbd716d30f10efcd9a9c1f3d0eb762d054b43a66ec0"
+        },
+        {
+          "name": "Fabric Model",
+          "path": "microsoft/fabric/item/fabric-model.svg",
+          "source": "v6.1.0/package/dist/svg/model_48_item.svg",
+          "sha256": "c648a0da9c88f4c79ea6ee127c146ce0682d917b78b83079e9aedd09dbf2a1ef"
+        },
+        {
+          "name": "Fabric No Access Semantic Model",
+          "path": "microsoft/fabric/item/fabric-no-access-semantic-model.svg",
+          "source": "v6.1.0/package/dist/svg/no_access_semantic_model_48_item.svg",
+          "sha256": "8315b3beb737be0cbe76d8ef2d3fc83c90d5e47b1bdb30b7ba003279bb324a30"
+        },
+        {
+          "name": "Fabric Notebook",
+          "path": "microsoft/fabric/item/fabric-notebook.svg",
+          "source": "v6.1.0/package/dist/svg/notebook_48_item.svg",
+          "sha256": "d1822f787c453b2edf2f5af8ecca2b8b1258e07859dfaf057562b0f166dbc866"
+        },
+        {
+          "name": "Fabric Operations Agent",
+          "path": "microsoft/fabric/item/fabric-operations-agent.svg",
+          "source": "v6.1.0/package/dist/svg/operations_agent_48_item.svg",
+          "sha256": "4e57a5002b659fa9e0cbd8796defb21ea849242d3048e55dc04388c13afec84e"
+        },
+        {
+          "name": "Fabric Paginated Report",
+          "path": "microsoft/fabric/item/fabric-paginated-report.svg",
+          "source": "v6.1.0/package/dist/svg/paginated_report_48_item.svg",
+          "sha256": "45667a202d9360df045233e11d3ca3039be1195452bd2b411213fc474fca19d3"
+        },
+        {
+          "name": "Fabric Pipeline",
+          "path": "microsoft/fabric/item/fabric-pipeline.svg",
+          "source": "v6.1.0/package/dist/svg/pipeline_48_item.svg",
+          "sha256": "a0df60d8e899ff5f8bdb80fe5281cba002735267297f371098f5ff6d55bbe744"
+        },
+        {
+          "name": "Fabric Planning",
+          "path": "microsoft/fabric/item/fabric-planning.svg",
+          "source": "v6.1.0/package/dist/svg/planning_48_item.svg",
+          "sha256": "6cce6260d5dcff3f8bc972436a6ca23bc985e9da9c8061667ae5b9b4ae73a590"
+        },
+        {
+          "name": "Fabric Rdl Report",
+          "path": "microsoft/fabric/item/fabric-rdl-report.svg",
+          "source": "v6.1.0/package/dist/svg/rdl_report_48_item.svg",
+          "sha256": "790d5d174f6478ff4bcfc4ed3370ffeec054e50fdb03ef8318233e7236b5e248"
+        },
+        {
+          "name": "Fabric Real Time Dashboard",
+          "path": "microsoft/fabric/item/fabric-real-time-dashboard.svg",
+          "source": "v6.1.0/package/dist/svg/real_time_dashboard_48_item.svg",
+          "sha256": "829c839e2e71a54480840aed0c5524112523fab85b3831c4c101581ede911665"
+        },
+        {
+          "name": "Fabric Report",
+          "path": "microsoft/fabric/item/fabric-report.svg",
+          "source": "v6.1.0/package/dist/svg/report_48_item.svg",
+          "sha256": "2e8640722aa8a530a0f98fde21482f1957a0589ef701823b319bbfccb26d9e44"
+        },
+        {
+          "name": "Fabric Restricted Report",
+          "path": "microsoft/fabric/item/fabric-restricted-report.svg",
+          "source": "v6.1.0/package/dist/svg/restricted_report_48_item.svg",
+          "sha256": "b36ef33a4b4061bb738a2cac6922611ed9355dd559d1f1e3d5d438428e46d626"
+        },
+        {
+          "name": "Fabric Restricted Scorecard",
+          "path": "microsoft/fabric/item/fabric-restricted-scorecard.svg",
+          "source": "v6.1.0/package/dist/svg/restricted_scorecard_48_item.svg",
+          "sha256": "e08a0d16b3356ddd6fb01d3488021cb31a69d47d981e9d0799563cb346288736"
+        },
+        {
+          "name": "Fabric Retail",
+          "path": "microsoft/fabric/item/fabric-retail.svg",
+          "source": "v6.1.0/package/dist/svg/retail_48_item.svg",
+          "sha256": "969ec46828e1cd1bdd44dff6966894707bb8dbb65721972c2e33dc5998cf3b14"
+        },
+        {
+          "name": "Fabric Runtime Lineage",
+          "path": "microsoft/fabric/item/fabric-runtime-lineage.svg",
+          "source": "v6.1.0/package/dist/svg/runtime_lineage_48_item.svg",
+          "sha256": "3c79f247c2bc67c6323b5417a4d1ae55247453f7367e15cc5b778f0b8a4ab397"
+        },
+        {
+          "name": "Fabric Schema Model",
+          "path": "microsoft/fabric/item/fabric-schema-model.svg",
+          "source": "v6.1.0/package/dist/svg/schema_model_48_item.svg",
+          "sha256": "b5c42fecb17a5a61b53557029a4d06f2c6435bb7fd5c37152c7e88d5b4bcf926"
+        },
+        {
+          "name": "Fabric Scorecard",
+          "path": "microsoft/fabric/item/fabric-scorecard.svg",
+          "source": "v6.1.0/package/dist/svg/scorecard_48_item.svg",
+          "sha256": "2d677e06f1fa8a32a451f1c8d9ad67bc8c1643f27c106bab09fee53619f73f33"
+        },
+        {
+          "name": "Fabric Semantic Model",
+          "path": "microsoft/fabric/item/fabric-semantic-model.svg",
+          "source": "v6.1.0/package/dist/svg/semantic_model_48_item.svg",
+          "sha256": "c0317bc92fea437d374b71788b037705f61983cd59573808ce933f3d03e14abb"
+        },
+        {
+          "name": "Fabric Shared Semantic Model",
+          "path": "microsoft/fabric/item/fabric-shared-semantic-model.svg",
+          "source": "v6.1.0/package/dist/svg/shared_semantic_model_48_item.svg",
+          "sha256": "d5ad72272ccc37be97d2ca86fad773bbaae6d0f5ec96e9ed26855a73576950e8"
+        },
+        {
+          "name": "Fabric Spark Job Direction",
+          "path": "microsoft/fabric/item/fabric-spark-job-direction.svg",
+          "source": "v6.1.0/package/dist/svg/spark_job_direction_48_item.svg",
+          "sha256": "491d44592265463ed40aa81dce4272539a2d6f78cc7080565f20791ebcf68705"
+        },
+        {
+          "name": "Fabric SQL Database",
+          "path": "microsoft/fabric/item/fabric-sql-database.svg",
+          "source": "v6.1.0/package/dist/svg/sql_database_48_item.svg",
+          "sha256": "dc11db66e7960fd57725373a25c1f5b59a51722af8443631b47475c507896de6"
+        },
+        {
+          "name": "Fabric Streaming Dataflow",
+          "path": "microsoft/fabric/item/fabric-streaming-dataflow.svg",
+          "source": "v6.1.0/package/dist/svg/streaming_dataflow_48_item.svg",
+          "sha256": "5be5239698a803c9ffdcc4838289f18eba5fd1dbeba3d664d257d2cb3e0414d2"
+        },
+        {
+          "name": "Fabric Streaming Semantic Model",
+          "path": "microsoft/fabric/item/fabric-streaming-semantic-model.svg",
+          "source": "v6.1.0/package/dist/svg/streaming_semantic_model_48_item.svg",
+          "sha256": "6d456c39f53e575998ca77ab2b8c620e877bcc32f40061d8c62d9a842ddf94ca"
+        },
+        {
+          "name": "Fabric Sustainability",
+          "path": "microsoft/fabric/item/fabric-sustainability.svg",
+          "source": "v6.1.0/package/dist/svg/sustainability_48_item.svg",
+          "sha256": "b6d4a320b1bebc13212b511b04db5dbb3688f634fa8a3878c2d049d4534f7c40"
+        },
+        {
+          "name": "Fabric User Data Function",
+          "path": "microsoft/fabric/item/fabric-user-data-function.svg",
+          "source": "v6.1.0/package/dist/svg/user_data_function_48_item.svg",
+          "sha256": "bf3b28e23553fb130fd7ca9b420c5075e6f979e0311453bcd334e738b9ee66c0"
+        },
+        {
+          "name": "Fabric Variable Library",
+          "path": "microsoft/fabric/item/fabric-variable-library.svg",
+          "source": "v6.1.0/package/dist/svg/variable_library_48_item.svg",
+          "sha256": "1135a0deba56f682b7943add931d81eeff50c2d90b4c0eeb666f50cf937fe63e"
+        }
+      ]
+    }
+  }
+}
