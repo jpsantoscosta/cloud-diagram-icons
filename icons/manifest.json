@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-05T18:59:03Z",
+  "generated": "2026-08-05T19:00:21Z",
   "notice": "Icons are Microsoft property, mirrored here on the permitted-use basis stated in each source pack's terms: they may be copied, distributed, and displayed for use in architecture diagrams, training materials, and documentation.",
   "estates": {
     "dynamics": {
@@ -7,7 +7,7 @@
       "source": "https://download.microsoft.com/download/498606aa-6d27-4f13-aa5c-1401078c153b/Dynamics-365-icons-scalable.zip",
       "reference": "https://learn.microsoft.com/en-us/dynamics365/get-started/icons",
       "pack_sha256": "f5f4d96aaa637b71e47136cc74e9a4a69b8a81f7e43c1c5756f00b5cea9ffe02",
-      "synced": "2026-08-05T18:59:03Z",
+      "synced": "2026-08-05T19:00:21Z",
       "count": 16,
       "files": [
         {
@@ -113,7 +113,7 @@
       "source": "https://download.microsoft.com/download/498606aa-6d27-4f13-aa5c-1401078c153b/Power-Platform-icons-scalable.zip",
       "reference": "https://learn.microsoft.com/en-us/power-platform/guidance/icons",
       "pack_sha256": "d5abafebbce553690caf7b42dd14b8335bf2c0dfc09f46bd9ac8041187da2c3a",
-      "synced": "2026-08-05T18:59:03Z",
+      "synced": "2026-08-05T19:00:21Z",
       "count": 8,
       "files": [
         {
@@ -171,7 +171,7 @@
       "source": "https://download.microsoft.com/download/3/1/a/31a56038-856a-4489-88e4-ee5a1c4352be/Microsoft%20Entra%20architecture%20icons%20-%20Oct%202023.zip",
       "reference": "https://learn.microsoft.com/en-us/entra/architecture/architecture-icons",
       "pack_sha256": "4e07536706a2d092e6524e5417e2c861333fdbdb41c36f78d44dfa07ccc5eedc",
-      "synced": "2026-08-05T18:59:03Z",
+      "synced": "2026-08-05T19:00:21Z",
       "count": 7,
       "files": [
         {
@@ -223,7 +223,7 @@
       "source": "https://raw.githubusercontent.com/microsoft/fabric-samples/main/docs-samples/Icons.zip",
       "reference": "https://learn.microsoft.com/en-us/fabric/fundamentals/icons",
       "pack_sha256": "fc22e71b0545ed15e22c53f16bf4fb06ffe72daabd3c90a947a6e481c9675e6b",
-      "synced": "2026-08-05T18:59:03Z",
+      "synced": "2026-08-05T19:00:21Z",
       "count": 57,
       "files": [
         {
