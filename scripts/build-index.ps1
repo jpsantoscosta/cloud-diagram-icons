@@ -127,5 +127,16 @@ $index = [ordered]@{
     icons     = $icons
 }
 $indexPath = Join-Path $RepoRoot $OutFile
-Set-Content -Path $indexPath -Value (ConvertTo-Json -InputObject $index -Depth 5 -Compress) -Encoding UTF8 -NoNewline
-Write-Host "wrote $indexPath ($([math]::Round((Get-Item $indexPath).Length/1KB)) KB, $($icons.Count) icons)"
+
+# Only rewrite when content changed, ignoring the volatile generated timestamp,
+# so the monthly Action opens a PR only for real icon changes and "generated"
+# means "last actual change".
+$newJson = ConvertTo-Json -InputObject $index -Depth 5 -Compress
+$stripGenerated = { param($s) $s -replace '"generated":"[^"]*",', '' }
+if ((Test-Path $indexPath) -and (& $stripGenerated (Get-Content $indexPath -Raw)) -eq (& $stripGenerated $newJson)) {
+    Write-Host "$indexPath unchanged (ignoring timestamp); not rewritten"
+}
+else {
+    Set-Content -Path $indexPath -Value $newJson -Encoding UTF8 -NoNewline
+    Write-Host "wrote $indexPath ($([math]::Round((Get-Item $indexPath).Length/1KB)) KB, $($icons.Count) icons)"
+}
