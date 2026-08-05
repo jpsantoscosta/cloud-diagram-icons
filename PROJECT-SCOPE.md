@@ -162,6 +162,7 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 | Canonical naming (JP, 05 Aug 2026) | `name` = official Microsoft product name ("Microsoft Sentinel", not "Sentinel"). Alias file supports rename via object form `{"name": ..., "aliases": [...]}` keyed by exact builtin title; the builtin title is kept as an alias automatically. Shorthand ("Sentinel", "AKS") and legacy names ("Azure AD" on Microsoft Entra ID) must resolve via search |
 | Entra ID icon identity | The modern Entra ID logo is builtin `other/Entra_Identity.svg` (renamed "Microsoft Entra ID", aliases Azure AD/AAD/Entra); `identity/Azure_Active_Directory.svg` is the legacy AAD icon and keeps the historical name |
 | MCP search must be word-boundary, not substring | Raw substring matching makes "Azure AD" match "Azure ADvisor". Phase 2 search tool: token/word-boundary matching over name + aliases + tags, exact-alias hits ranked first |
+| Composed end-to-end test PASSED (05 Aug 2026) | Claude Code + @drawio/mcp + cloud-diagram-icons-mcp: model resolved all five services through the icon server before building, produced builtin style strings, and the diagram rendered correctly in the draw.io editor (examples/demo.drawio). This satisfies the Phase 2 success measure. Note: when prompted explicitly the model composes the servers correctly; the skill/instructions layer (step 11) exists to make that behaviour automatic |
 
 ### 7a. Corrected assumptions (research findings, 03 Aug 2026)
 
