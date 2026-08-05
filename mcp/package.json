@@ -1,0 +1,40 @@
+{
+  "name": "cloud-diagram-icons-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that gives LLMs exact draw.io style strings for cloud service icons (Microsoft first). Compose with the official draw.io MCP tooling to generate diagrams with real portal icons.",
+  "license": "MIT",
+  "author": "JP Costa (https://github.com/jpsantoscosta)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpsantoscosta/cloud-diagram-icons.git",
+    "directory": "mcp"
+  },
+  "type": "module",
+  "bin": {
+    "cloud-diagram-icons-mcp": "src/index.js"
+  },
+  "files": [
+    "src/",
+    "data/icons.json"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test",
+    "prepack": "node scripts/snapshot.js"
+  },
+  "keywords": [
+    "mcp",
+    "drawio",
+    "diagrams",
+    "azure",
+    "icons",
+    "architecture-diagrams"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  }
+}

@@ -128,10 +128,10 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 - [ ] 4. Gap converter → embedded entries + supplemental libraries for M365/Dynamics/Power Platform — DEFERRED per JP 05 Aug 2026: get the core (builtin index → publish → MCP) working first
 - [ ] 5. Icon mirror (D4): icons/ tree, manifest.json, sanitisation + sanity gates — DEFERRED with step 4
 - [x] 6. GitHub Action (monthly diff against jgraph/drawio, PR-based, loud failure) — verified live 05 Aug 2026 (first run surfaced two fixes: repo must allow Actions to create PRs, now enabled; volatile generated timestamp no longer triggers rewrites). Microsoft pack diffing joins when step 4 undeferred
-- [ ] 7. Repo hardening: SHA-pinned Actions [x], Dependabot [x]; branch protection blocked until repo is public (free-plan limitation) — JP decision pending on visibility
+- [x] 7. Repo hardening: SHA-pinned Actions, Dependabot, branch protection on main (PRs required, no force-push, linear history, admins exempt) — 05 Aug 2026, applied after repo made public
 - [x] 8. Repo polish: README, licensing notice, credit to drawio-mcp and dwarfered — 05 Aug 2026
-- [ ] 9. Publish + blog post (Phase 1 done)
-- [ ] 10. Icon MCP server on top of icons.json
+- [ ] 9. Publish + blog post (Phase 1 done) — repo public since 05 Aug 2026; blog post pending
+- [x] 10. Icon MCP server on top of icons.json — mcp/ package built 05 Aug 2026; 11 unit tests + stdio smoke test pass (AKS and Azure AD resolve over live index); npm publish + name reservation pending JP's npm login
 - [ ] 11. Skill / instructions layer
 - [ ] 12. Blog post 2 + GitHub MCP Registry listing + MVP activity entries
 
