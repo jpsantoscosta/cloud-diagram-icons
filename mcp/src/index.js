@@ -10,7 +10,7 @@ import { loadIndex, searchIcons, getIcon, listCategories, listProviders } from '
 
 const index = await loadIndex();
 
-const server = new McpServer({ name: 'cloud-diagram-icons', version: '0.1.1' });
+const server = new McpServer({ name: 'cloud-diagram-icons', version: '0.1.2' });
 
 const asText = (value) => ({ content: [{ type: 'text', text: JSON.stringify(value, null, 2) }] });
 
