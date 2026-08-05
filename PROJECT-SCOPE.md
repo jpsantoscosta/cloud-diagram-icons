@@ -131,7 +131,7 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 - [x] 7. Repo hardening: SHA-pinned Actions, Dependabot, branch protection on main (PRs required, no force-push, linear history), secret scanning with push protection, Dependabot security updates, private vulnerability reporting, read-only default workflow token, SECURITY.md and style-allowlist validation at both trust boundaries — 05 Aug 2026
 - [x] 8. Repo polish: README, licensing notice, credits to drawio-mcp and community libraries — 05 Aug 2026
 - [ ] 9. Public announcement — repository public since 05 Aug 2026; announcement pending
-- [x] 10. Icon MCP server on top of icons.json — published as cloud-diagram-icons-mcp; 0.1.1 (current `latest`, 05 Aug 2026) carries the style-allowlist validation, verified by running the shipped validator against the shipped snapshot. Unit tests and stdio smoke test pass
+- [x] 10. Icon MCP server on top of icons.json — published as cloud-diagram-icons-mcp; 0.1.2 (current `latest`, 05 Aug 2026) carries the style-allowlist validation and the full 846-icon offline snapshot, both verified by running the published validator against the published snapshot. Unit tests and stdio smoke test pass
 - [x] 11. Skill / instructions layer — Claude skill and Copilot instructions file, 05 Aug 2026
 - [ ] 12. GitHub MCP Registry listing, community activity entries — pending
 
