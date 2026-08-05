@@ -1,0 +1,7 @@
+# Generated artefacts are produced on Windows locally and Linux in CI. Some
+# upstream SVGs ship with CRLF, so without normalisation the two platforms
+# commit byte-different copies of identical icons and every refresh looks
+# like a change.
+* text=auto eol=lf
+*.png binary
+*.zip binary

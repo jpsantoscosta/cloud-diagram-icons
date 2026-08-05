@@ -320,12 +320,24 @@ foreach ($stage in $staged) {
     $libraryJson = ConvertTo-Json -InputObject @($libraryEntries) -Depth 4 -Compress
     Set-Content -Path $libraryPath -Value "<mxlibrary>$libraryJson</mxlibrary>" -Encoding UTF8 -NoNewline
 
+    # `synced` marks the last time this estate's contents actually changed,
+    # not the last time it was checked. Stamping every run would make the
+    # monthly refresh open a pull request even when nothing upstream moved;
+    # the workflow run history is the record of checks.
+    $syncStamp = $syncedAt
+    if ($previousManifest.ContainsKey($estate)) {
+        $prevEstate = $previousManifest[$estate]
+        $prevFiles = ($prevEstate.files | ForEach-Object { "$($_.path)|$($_.sha256)" }) -join "`n"
+        $newFiles = ($manifestFiles | ForEach-Object { "$($_.path)|$($_.sha256)" }) -join "`n"
+        if ($prevFiles -eq $newFiles) { $syncStamp = $prevEstate.synced }
+    }
+
     $manifestEstates[$estate] = [ordered]@{
         label       = $stage.Source.Label
         source      = $stage.Source.Url
         reference   = $stage.Source.Reference
         pack_sha256 = $stage.PackSha
-        synced      = $syncedAt
+        synced      = $syncStamp
         count       = $stage.Icons.Count
         files       = $manifestFiles
     }
@@ -339,7 +351,15 @@ $manifest = [ordered]@{
     estates   = $manifestEstates
 }
 New-Item -ItemType Directory -Force -Path (Split-Path $manifestPath) | Out-Null
-Set-Content -Path $manifestPath -Value (ConvertTo-Json -InputObject $manifest -Depth 6) -Encoding UTF8 -NoNewline
+$manifestJson = ConvertTo-Json -InputObject $manifest -Depth 6
+$stripStamps = { param($s) ($s -replace '"(generated|synced)":\s*"[^"]*"', '') }
+if ((Test-Path $manifestPath) -and (& $stripStamps (Get-Content $manifestPath -Raw)) -eq (& $stripStamps $manifestJson)) {
+    Write-Host "$manifestPath unchanged; not rewritten"
+}
+else {
+    Set-Content -Path $manifestPath -Value $manifestJson -Encoding UTF8 -NoNewline
+    Write-Host "wrote $manifestPath ($($manifestEstates.Count) estates)"
+}
 
 $merged = [System.Collections.Generic.List[object]]::new()
 foreach ($icon in $builtin) { $merged.Add($icon) }
@@ -348,7 +368,15 @@ foreach ($icon in $embedded) { $merged.Add($icon) }
 $index.generated = $syncedAt
 $index.count = $merged.Count
 $index.icons = $merged
-Set-Content -Path $indexPath -Value (ConvertTo-Json -InputObject $index -Depth 5 -Compress) -Encoding UTF8 -NoNewline
 
-Write-Host "wrote $indexPath ($($builtin.Count) builtin + $($embedded.Count) embedded = $($merged.Count) icons)"
-Write-Host "wrote $manifestPath ($($manifestEstates.Count) estates)"
+# As in build-index.ps1: the volatile timestamp must not by itself make the
+# monthly refresh look like a change.
+$indexJson = ConvertTo-Json -InputObject $index -Depth 5 -Compress
+$stripGenerated = { param($s) $s -replace '"generated":"[^"]*",', '' }
+if ((Test-Path $indexPath) -and (& $stripGenerated (Get-Content $indexPath -Raw)) -eq (& $stripGenerated $indexJson)) {
+    Write-Host "$indexPath unchanged (ignoring timestamp); not rewritten"
+}
+else {
+    Set-Content -Path $indexPath -Value $indexJson -Encoding UTF8 -NoNewline
+    Write-Host "wrote $indexPath ($($builtin.Count) builtin + $($embedded.Count) embedded = $($merged.Count) icons)"
+}
