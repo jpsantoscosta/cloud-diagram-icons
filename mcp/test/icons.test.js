@@ -62,6 +62,38 @@ test('provider filter works', () => {
   assert.ok(searchIcons(index, 'AKS', { provider: 'microsoft' }).length > 0);
 });
 
+test('search collapses entries that resolve to the same shape', () => {
+  const dupes = [
+    { provider: 'microsoft', category: 'app_services', name: 'Azure App Service', aliases: ['App Service'], w: 68, h: 68, ref: 'builtin', style: `${STYLE_PREFIX}image=img/lib/azure2/app_services/App_Services.svg;`, tags: 'app service' },
+    { provider: 'microsoft', category: 'compute', name: 'Azure App Service', aliases: ['App Service'], w: 68, h: 68, ref: 'builtin', style: `${STYLE_PREFIX}image=img/lib/azure2/app_services/App_Services.svg;`, tags: 'app service' },
+    { provider: 'microsoft', category: 'web', name: 'Azure App Service', aliases: ['App Service'], w: 68, h: 68, ref: 'builtin', style: `${STYLE_PREFIX}image=img/lib/azure2/web/App_Services.svg;`, tags: 'app service' },
+  ];
+  const stub = { icons: dupes, count: dupes.length };
+  // Two identical styles collapse to one; the third points elsewhere and stays.
+  assert.equal(searchIcons(stub, 'Azure App Service').length, 2);
+});
+
+test('an alias matching several entries of one shape is not ambiguous', () => {
+  const dupes = [
+    { provider: 'microsoft', category: 'app_services', name: 'Azure App Service', aliases: ['App Service'], w: 68, h: 68, ref: 'builtin', style: `${STYLE_PREFIX}image=img/lib/azure2/app_services/App_Services.svg;`, tags: '' },
+    { provider: 'microsoft', category: 'compute', name: 'Azure App Service', aliases: ['App Service'], w: 68, h: 68, ref: 'builtin', style: `${STYLE_PREFIX}image=img/lib/azure2/app_services/App_Services.svg;`, tags: '' },
+  ];
+  const res = getIcon({ icons: dupes }, 'App Service');
+  assert.equal(res.error, undefined);
+  assert.equal(res.icon.name, 'Azure App Service');
+});
+
+test('shipped index has no entry repeating both name and style', () => {
+  const seen = new Set();
+  const repeats = [];
+  for (const i of index.icons) {
+    const key = `${i.name}|${i.style}`;
+    if (seen.has(key)) repeats.push(i.name);
+    seen.add(key);
+  }
+  assert.equal(repeats.length, 0, `repeated: ${[...new Set(repeats)].join(', ')}`);
+});
+
 test('isSafeStyle accepts bundled asset paths and inline SVG only', () => {
   assert.ok(isSafeStyle(`${STYLE_PREFIX}image=img/lib/azure2/compute/Kubernetes_Services.svg;`));
   assert.ok(isSafeStyle(`${STYLE_PREFIX}image=data:image/svg+xml,PHN2Zz48L3N2Zz4=;`));

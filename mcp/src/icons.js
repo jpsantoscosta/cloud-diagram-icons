@@ -108,7 +108,20 @@ export function searchIcons(index, query, { provider, limit = 10 } = {}) {
   }
 
   scored.sort((a, b) => b.score - a.score || a.icon.name.localeCompare(b.icon.name));
-  return scored.slice(0, limit).map(({ score, icon }) => ({ ...publicIcon(icon), score }));
+
+  // Two entries with the same style are the same shape, so returning both only
+  // asks the caller to choose between identical options. Keep the best-scoring
+  // one. Entries that differ in style are kept: some share a name while being
+  // genuinely different artwork.
+  const seen = new Set();
+  const results = [];
+  for (const { score, icon } of scored) {
+    if (seen.has(icon.style)) continue;
+    seen.add(icon.style);
+    results.push({ ...publicIcon(icon), score });
+    if (results.length >= limit) break;
+  }
+  return results;
 }
 
 /** Exact lookup by name or alias (case-insensitive); falls back to a unique
@@ -121,7 +134,10 @@ export function getIcon(index, name, { provider } = {}) {
   if (exact.length > 0) return { icon: publicIcon(exact[0]) };
 
   const byAlias = pool.filter((i) => (i.aliases ?? []).some((a) => norm(a) === q));
-  if (byAlias.length === 1) return { icon: publicIcon(byAlias[0]) };
+  // Matches that all resolve to the same shape are not ambiguous.
+  if (byAlias.length > 0 && new Set(byAlias.map((i) => i.style)).size === 1) {
+    return { icon: publicIcon(byAlias[0]) };
+  }
   if (byAlias.length > 1) return ambiguous(byAlias);
 
   const hits = searchIcons(index, name, { provider, limit: 6 });

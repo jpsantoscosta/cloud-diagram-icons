@@ -5,7 +5,7 @@
 
 **Give your AI assistant the real Microsoft icons when it draws draw.io diagrams.**
 
-Ask Claude or Copilot for an Azure architecture diagram and you usually get grey rectangles, because the model has no way to look up the correct icon for a named service. This project is the missing lookup layer: an index of 846 Microsoft icons keyed by the names people actually use, served over MCP, so the model resolves "AKS" or "Sentinel" to the exact draw.io style string before it draws anything.
+Ask Claude or Copilot for an Azure architecture diagram and you usually get grey rectangles, because the model has no way to look up the correct icon for a named service. This project is the missing lookup layer: an index of 794 Microsoft icons keyed by the names people actually use, served over MCP, so the model resolves "AKS" or "Sentinel" to the exact draw.io style string before it draws anything.
 
 It does not generate diagrams. It composes with the official [draw.io MCP tooling](https://github.com/jgraph/drawio-mcp), which does.
 
@@ -108,7 +108,7 @@ Prefer ready-made Azure and M365 palettes maintained for humans? See [dwarfered/
 npx -y cloud-diagram-icons-mcp
 ```
 
-It should print `cloud-diagram-icons-mcp ready: 846 icons from ...` to stderr and then wait. If that works, the problem is in your client's config file rather than the server.
+It should print `cloud-diagram-icons-mcp ready: 794 icons from ...` to stderr and then wait. If that works, the problem is in your client's config file rather than the server.
 
 **An icon is missing or wrongly named.** Please [open an issue](https://github.com/jpsantoscosta/cloud-diagram-icons/issues) with the name you searched for. Alias coverage is curated by hand and gaps are worth reporting.
 
@@ -116,7 +116,7 @@ It should print `cloud-diagram-icons-mcp ready: 846 icons from ...` to stderr an
 
 ## What's in the index
 
-846 entries: 766 Azure and Power Platform icons referenced from draw.io's builtin `azure2` shape library, plus 80 icons for the estates draw.io does not bundle (Dynamics 365, Microsoft Fabric items, Microsoft Entra product family, current Power Platform), embedded from Microsoft's official packs.
+794 entries: 714 Azure and Power Platform icons referenced from draw.io's builtin `azure2` shape library, plus 80 icons for the estates draw.io does not bundle (Dynamics 365, Microsoft Fabric items, Microsoft Entra product family, current Power Platform), embedded from Microsoft's official packs.
 
 ```json
 {

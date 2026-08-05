@@ -134,6 +134,31 @@ for ($i = 0; $i -lt $sections.Count; $i++) {
 }
 
 Write-Host "Parsed $($icons.Count) builtin entries across $($fnCategory.Count) categories"
+
+# draw.io registers some shapes in several palettes with different search
+# keywords. Where the name and the style are both identical the entries are the
+# same icon in every respect, and returning four indistinguishable options just
+# forces callers to pick arbitrarily. Keep one, and fold the other palettes'
+# keywords and category names into its tags so nothing becomes less findable.
+# Entries that share a name but point at different files are left alone: some
+# are genuinely different artwork.
+$deduped = [System.Collections.Generic.List[object]]::new()
+$byKey = @{}
+foreach ($icon in $icons) {
+    $key = "$($icon.name)|$($icon.style)"
+    if ($byKey.ContainsKey($key)) {
+        $existing = $byKey[$key]
+        $words = "$($existing['tags']) $($icon['tags']) $($icon['category'])" -split '\s+' |
+            Where-Object { $_ } | Select-Object -Unique
+        $existing['tags'] = ($words -join ' ')
+        continue
+    }
+    $byKey[$key] = $icon
+    $deduped.Add($icon)
+}
+$collapsed = $icons.Count - $deduped.Count
+if ($collapsed -gt 0) { Write-Host "Collapsed $collapsed duplicate registrations of identical icons" }
+$icons = $deduped
 $unmatched = $aliasMap.Keys | Where-Object { -not $aliasHits.Contains($_) }
 if ($unmatched) { Write-Warning "Alias keys with no matching builtin title: $($unmatched -join ', ')" }
 

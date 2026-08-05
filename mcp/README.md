@@ -2,7 +2,7 @@
 
 **Give your AI assistant the real Microsoft icons when it draws draw.io diagrams.**
 
-Ask a model for an Azure architecture diagram and you usually get grey rectangles, because it has no way to look up the correct icon for a named service. This MCP server is the missing lookup layer: 846 Microsoft icons keyed by the names people actually use, so the model resolves "AKS" or "Sentinel" to the exact draw.io style string before it draws anything.
+Ask a model for an Azure architecture diagram and you usually get grey rectangles, because it has no way to look up the correct icon for a named service. This MCP server is the missing lookup layer: 794 Microsoft icons keyed by the names people actually use, so the model resolves "AKS" or "Sentinel" to the exact draw.io style string before it draws anything.
 
 Covers Azure, Power Platform, Dynamics 365, Microsoft Fabric, and Microsoft Entra.
 
@@ -64,7 +64,7 @@ Results carry the `style` string to drop into an mxCell `style` attribute, plus 
 
 The server fetches the latest index from GitHub at startup, so new icons arrive without reinstalling, and falls back to the snapshot bundled at publish time when offline. Set `CLOUD_DIAGRAM_ICONS_URL` to point at a fork or mirror.
 
-Not connecting? Run `npx -y cloud-diagram-icons-mcp` directly. It prints `ready: 846 icons from ...` to stderr and waits; if that works, the problem is in your client's config rather than the server.
+Not connecting? Run `npx -y cloud-diagram-icons-mcp` directly. It prints `ready: 794 icons from ...` to stderr and waits; if that works, the problem is in your client's config rather than the server.
 
 ## Security
 
