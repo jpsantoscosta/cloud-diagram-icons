@@ -45,11 +45,29 @@ pwsh scripts/build-index.ps1
 
 The script parses `Sidebar-Azure2.js` from [jgraph/drawio](https://github.com/jgraph/drawio) and merges curated names and aliases from [`data/aliases/azure.json`](data/aliases/azure.json). A monthly GitHub Action re-runs it and opens a PR when draw.io ships new icons, so the index does not go stale.
 
+## Using with AI (MCP)
+
+The [`cloud-diagram-icons-mcp`](https://www.npmjs.com/package/cloud-diagram-icons-mcp) npm package (source in [`mcp/`](mcp/)) serves this index over MCP with `search_icons`, `get_icon`, `list_categories`, and `list_providers`. Compose it with the official draw.io MCP tooling:
+
+```json
+{
+  "mcpServers": {
+    "drawio": { "command": "npx", "args": ["-y", "@drawio/mcp"] },
+    "cloud-diagram-icons": { "command": "npx", "args": ["-y", "cloud-diagram-icons-mcp"] }
+  }
+}
+```
+
+To make models resolve icons automatically instead of only when asked:
+
+- **Claude Code:** copy [`.claude/skills/cloud-diagram-icons/`](.claude/skills/cloud-diagram-icons/) into your project's `.claude/skills/` (or `~/.claude/skills/` for all projects).
+- **GitHub Copilot:** copy the rules from [`docs/copilot-instructions.md`](docs/copilot-instructions.md) into your repo's `.github/copilot-instructions.md`.
+
+A working example produced this way: [`examples/demo.drawio`](examples/demo.drawio).
+
 ## Roadmap
 
-- MCP server (`cloud-diagram-icons-mcp`): `search_icons`, `get_icon`, `list_categories`, `list_providers` over this index
-- Gap estates with embedded icons: M365, Dynamics 365, Microsoft Fabric, full Power Platform
-- Claude skill and Copilot instructions layer
+- Gap estates with embedded icons: M365, Dynamics 365, Microsoft Fabric
 - AWS and GCP, using the same provider-aware schema
 
 ## Licensing and credits

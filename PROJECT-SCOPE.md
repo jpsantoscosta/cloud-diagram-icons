@@ -132,8 +132,8 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 - [x] 8. Repo polish: README, licensing notice, credit to drawio-mcp and dwarfered — 05 Aug 2026
 - [ ] 9. Publish + blog post (Phase 1 done) — repo public since 05 Aug 2026; blog post pending
 - [x] 10. Icon MCP server on top of icons.json — mcp/ package built 05 Aug 2026; 11 unit tests + stdio smoke test pass (AKS and Azure AD resolve over live index); published to npm as cloud-diagram-icons-mcp@0.1.0 by JP 05 Aug 2026, name reserved
-- [ ] 11. Skill / instructions layer
-- [ ] 12. Blog post 2 + GitHub MCP Registry listing + MVP activity entries
+- [x] 11. Skill / instructions layer — .claude/skills/cloud-diagram-icons/SKILL.md (active in-repo, copyable) + docs/copilot-instructions.md, 05 Aug 2026. Layout standards encoded in the skill; JP's drawio-standards skill not found on this machine, merge later if it exists elsewhere
+- [ ] 12. Blog posts (deferred per JP 05 Aug 2026) + GitHub MCP Registry listing + MVP activity entries
 
 ## 7. Known challenges and decisions log
 
