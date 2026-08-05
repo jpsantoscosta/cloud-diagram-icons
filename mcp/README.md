@@ -25,6 +25,10 @@ Results include the `style` string to drop into an mxCell `style` attribute plus
 
 The server fetches the latest [icons.json](https://github.com/jpsantoscosta/cloud-diagram-icons) from GitHub at startup, so new icons arrive without reinstalling. Offline, it falls back to the snapshot bundled at publish time. Point `CLOUD_DIAGRAM_ICONS_URL` at a fork or mirror to override the source.
 
+## Security
+
+The index is treated as untrusted input: the server accepts a style only when its `image=` value is a relative path into draw.io's bundled assets or an inline `data:image/svg+xml` URI, and drops anything else on load (reporting the count on stderr). This prevents a tampered index from injecting external image URLs, which draw.io would request every time the diagram is opened. See [SECURITY.md](https://github.com/jpsantoscosta/cloud-diagram-icons/blob/main/SECURITY.md).
+
 ## Licensing
 
 Icons are Microsoft's property under Microsoft's terms of use, which permit their use in architecture diagrams. Builtin entries reference draw.io's bundled assets by path and redistribute nothing.

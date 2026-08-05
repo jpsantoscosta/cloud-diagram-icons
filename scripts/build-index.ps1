@@ -25,6 +25,23 @@ $ErrorActionPreference = 'Stop'
 $r = 400  # matches `var r = 400` in the sidebar source
 $StyleBase = 'image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/'
 
+# The sidebar source is fetched over the network, and every style string parsed
+# from it ends up pasted into users' diagrams. draw.io fetches whatever host
+# appears in `image=`, so an upstream compromise could turn generated diagrams
+# into tracking beacons. Only relative paths into draw.io's bundled assets are
+# accepted; anything else aborts the build.
+# Tolerant on naming (upstream uses parentheses and similar), strict on what
+# matters: stays under img/lib/, carries no scheme (no ":"), is not
+# protocol-relative ("//"), and does not traverse ("..").
+$SafeImageRef = '^img/lib/[A-Za-z0-9_./()+ -]+\.svg$'
+
+function Test-SafeStyle([string]$Style) {
+    $m = [regex]::Match($Style, '(?:^|;)image=([^;]*)')
+    if (-not $m.Success) { return $false }
+    $value = $m.Groups[1].Value
+    return ($value -match $SafeImageRef) -and ($value -notmatch '\.\.') -and ($value -notmatch '//')
+}
+
 function Resolve-Dim([string]$Expr) {
     $e = $Expr.Trim()
     if ($e -match '^r\s*\*\s*([\d.]+)$') { return [math]::Round($r * [double]$Matches[1], 2) }
@@ -88,6 +105,9 @@ for ($i = 0; $i -lt $sections.Count; $i++) {
         $styleArg = $m.Groups[2].Value -replace "\\'", "'"
         $style = if ($usesPrefix) { "$StyleBase$category/$styleArg" } else { $styleArg }
         $title = ($m.Groups[5].Value -replace "\\'", "'")
+        if (-not (Test-SafeStyle $style)) {
+            throw "Refusing to index '$title' ($fnName): style does not reference a bundled draw.io asset: $style"
+        }
         $name = $title
         $aliases = @()
         if ($aliasMap.ContainsKey($title)) {

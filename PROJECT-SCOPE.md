@@ -128,7 +128,7 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 - [ ] 4. Gap converter → embedded entries + supplemental libraries for M365/Dynamics/Power Platform — deferred until the core lookup path is proven in use
 - [ ] 5. Icon mirror (D4): icons/ tree, manifest.json, sanitisation + sanity gates — deferred with step 4
 - [x] 6. GitHub Action (monthly diff against jgraph/drawio, PR-based, loud failure) — verified live 05 Aug 2026; Microsoft pack diffing joins when step 4 is undeferred
-- [x] 7. Repo hardening: SHA-pinned Actions, Dependabot, branch protection on main (PRs required, no force-push, linear history) — 05 Aug 2026
+- [x] 7. Repo hardening: SHA-pinned Actions, Dependabot, branch protection on main (PRs required, no force-push, linear history), secret scanning with push protection, Dependabot security updates, private vulnerability reporting, read-only default workflow token, SECURITY.md and style-allowlist validation at both trust boundaries — 05 Aug 2026
 - [x] 8. Repo polish: README, licensing notice, credits to drawio-mcp and community libraries — 05 Aug 2026
 - [ ] 9. Publish announcement / blog coverage — repository public since 05 Aug 2026; written coverage pending
 - [x] 10. Icon MCP server on top of icons.json — published as cloud-diagram-icons-mcp@0.1.0 on 05 Aug 2026; unit tests and stdio smoke test pass
@@ -164,6 +164,8 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 | MCP search must be word-boundary, not substring | Raw substring matching makes "Azure AD" match "Azure ADvisor". Search uses token/word-boundary matching over name + aliases + tags, exact-alias hits ranked first |
 | Icon pack version drift | The index generator resolves the current upstream source at run time; the refresh Action fails loudly rather than shipping stale data |
 | Refresh Action must not open no-op PRs | The generator skips rewriting icons.json when only the generated timestamp would change, so PRs open only for real icon changes |
+| Index style strings are untrusted input | Verified in the draw.io editor: a style whose `image=` names an external host causes a real network request when the diagram is opened, so a tampered index would beacon on every viewer. Both boundaries now enforce an allowlist (relative `img/lib/...svg` path, or inline `data:image/svg+xml`): the generator aborts the build rather than indexing anything else, and the MCP server drops unsafe entries on load and warns. Verified against a simulated compromised upstream source |
+| Hostile index must not fall back silently | Transport and parse failures fall back to the bundled snapshot; an index that loads but fails validation raises instead, because silently serving the snapshot would mask tampering |
 | Composed end-to-end test | Passed 05 Aug 2026: a Claude Code session with @drawio/mcp + cloud-diagram-icons-mcp resolved five services through the icon server, produced builtin style strings, and the diagram rendered correctly in the draw.io editor (examples/demo.drawio). When prompted explicitly the model composes the servers correctly; the skill/instructions layer exists to make that behaviour automatic |
 
 ### 7a. Corrected assumptions (research, 03 Aug 2026)

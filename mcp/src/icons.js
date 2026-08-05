@@ -15,28 +15,64 @@ const SNAPSHOT_CANDIDATES = [
   path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'icons.json'),
 ];
 
+// The index is fetched over the network and its style strings are pasted
+// verbatim into diagrams, so it is untrusted input. draw.io fetches whatever
+// host appears in `image=`, which would turn a tampered index into a tracking
+// beacon firing for everyone who opens the diagram. Only two shapes are ever
+// legitimate: a relative path into draw.io's own bundled assets, or an inline
+// SVG data URI.
+// Upstream asset names include characters like parentheses, so the path rule
+// is deliberately tolerant on naming while strict on the properties that
+// matter: it must stay under img/lib/, it cannot carry a scheme (no ":"), it
+// cannot go protocol-relative ("//"), and it cannot traverse ("..").
+const BUILTIN_IMAGE = /^img\/lib\/[A-Za-z0-9_./()+ -]+\.svg$/;
+const EMBEDDED_IMAGE = /^data:image\/svg\+xml,[A-Za-z0-9+/=]+$/;
+
+/** True when a style's image reference is a bundled asset path or inline SVG. */
+export function isSafeStyle(style) {
+  if (typeof style !== 'string' || style.length > 200_000) return false;
+  const match = /(?:^|;)image=([^;]*)/.exec(style);
+  if (!match) return false;
+  const value = match[1];
+  if (EMBEDDED_IMAGE.test(value)) return true;
+  return BUILTIN_IMAGE.test(value) && !value.includes('..') && !value.includes('//');
+}
+
+/** Drop any entry whose style would point at an external resource. */
+function sanitiseIndex(index, source) {
+  const icons = index.icons.filter((icon) => isSafeStyle(icon.style));
+  const rejected = index.icons.length - icons.length;
+  if (icons.length === 0) throw new Error(`Icon index from ${source} contained no entries with a safe style`);
+  return { ...index, icons, count: icons.length, rejected, source };
+}
+
 /**
  * Load the icon index: live from GitHub so icon updates ship without
- * reinstalls, falling back to the bundled snapshot when offline.
+ * reinstalls, falling back to the bundled snapshot when offline. Entries with
+ * unsafe style strings are dropped before any caller sees them.
  */
 export async function loadIndex({ url = process.env.CLOUD_DIAGRAM_ICONS_URL || DEFAULT_INDEX_URL, fetchImpl = fetch } = {}) {
+  let fetched;
   try {
     const res = await fetchImpl(url, { signal: AbortSignal.timeout(10_000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const index = await res.json();
-    if (!Array.isArray(index.icons)) throw new Error('index has no icons array');
-    return { ...index, source: url };
-  } catch (err) {
+    fetched = await res.json();
+    if (!Array.isArray(fetched.icons)) throw new Error('index has no icons array');
+  } catch (transportErr) {
+    // Only transport and parse failures fall back to the snapshot. A hostile
+    // index must never be masked by silently serving the bundled copy.
     for (const candidate of SNAPSHOT_CANDIDATES) {
+      let snapshot;
       try {
-        const index = JSON.parse(await readFile(candidate, 'utf8'));
-        return { ...index, source: `${candidate} (offline fallback: ${err.message})` };
+        snapshot = JSON.parse(await readFile(candidate, 'utf8'));
       } catch {
-        // try next candidate
+        continue;
       }
+      return sanitiseIndex(snapshot, `${candidate} (offline fallback: ${transportErr.message})`);
     }
-    throw new Error(`Could not load icon index from ${url} (${err.message}) or any bundled snapshot`);
+    throw new Error(`Could not load icon index from ${url} (${transportErr.message}) or any bundled snapshot`);
   }
+  return sanitiseIndex(fetched, url);
 }
 
 const norm = (s) => s.toLowerCase().normalize('NFKD');

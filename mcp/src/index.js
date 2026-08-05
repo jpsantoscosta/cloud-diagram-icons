@@ -10,7 +10,7 @@ import { loadIndex, searchIcons, getIcon, listCategories, listProviders } from '
 
 const index = await loadIndex();
 
-const server = new McpServer({ name: 'cloud-diagram-icons', version: '0.1.0' });
+const server = new McpServer({ name: 'cloud-diagram-icons', version: '0.1.1' });
 
 const asText = (value) => ({ content: [{ type: 'text', text: JSON.stringify(value, null, 2) }] });
 
@@ -70,3 +70,9 @@ server.registerTool(
 
 await server.connect(new StdioServerTransport());
 console.error(`cloud-diagram-icons-mcp ready: ${index.count} icons from ${index.source}`);
+if (index.rejected > 0) {
+  console.error(
+    `WARNING: dropped ${index.rejected} icon(s) whose style pointed at an external resource. ` +
+      'Verify the index source is trusted.'
+  );
+}
