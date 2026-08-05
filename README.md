@@ -45,11 +45,11 @@ Any entry's `style` value drops straight into a draw.io `mxCell`:
 
 ## Icon mirror
 
-[`icons/microsoft/`](icons/microsoft) holds a categorised, sanitised mirror of the official Microsoft packs behind the embedded entries, with [`icons/manifest.json`](icons/manifest.json) recording each pack's source URL, checksum, and sync date alongside a sha256 per file. Useful on its own for slides, wikis, and docs; hotlink individual files through a CDN such as jsDelivr.
+[`icons/microsoft/`](icons/microsoft) holds a categorised, sanitised mirror of the four official Microsoft packs behind the embedded entries: 88 SVGs, slightly more than the 80 indexed, because the mirror keeps every icon a pack ships even where the index prefers a builtin reference. [`icons/manifest.json`](icons/manifest.json) records each pack's source URL, checksum, and last content change, alongside a sha256 per file. Useful on its own for slides, wikis, and docs; hotlink individual files through a CDN such as jsDelivr.
 
-Every mirrored SVG is stripped of scripts, event handlers, remote references, and embedded HTML before it lands, because hotlinked SVGs execute in the consuming page.
+Every mirrored SVG is stripped of scripts, event handlers, remote references, and embedded HTML before it lands, because hotlinked SVGs execute in the consuming page. See [SECURITY.md](SECURITY.md).
 
-Per-estate draw.io libraries live in [`libraries/`](libraries) and load into the editor via **File > Open Library From > URL**.
+Per-estate draw.io libraries live in [`libraries/`](libraries), one per mirrored estate, and load into the editor via **File > Open Library From > URL**.
 
 ## Rebuilding
 
@@ -78,7 +78,7 @@ To make models resolve icons automatically instead of only when asked:
 - **Claude Code:** copy [`.claude/skills/cloud-diagram-icons/`](.claude/skills/cloud-diagram-icons/) into your project's `.claude/skills/` (or `~/.claude/skills/` for all projects).
 - **GitHub Copilot:** copy the rules from [`docs/copilot-instructions.md`](docs/copilot-instructions.md) into your repo's `.github/copilot-instructions.md`.
 
-A working example produced this way: [`examples/demo.drawio`](examples/demo.drawio).
+Working examples produced this way: [`examples/azure-web-app.drawio`](examples/azure-web-app.drawio) (builtin references) and [`examples/gap-estates.drawio`](examples/gap-estates.drawio) (embedded icons across Dynamics 365, Fabric, and Entra).
 
 ## Roadmap
 

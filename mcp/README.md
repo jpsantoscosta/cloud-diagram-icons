@@ -1,6 +1,8 @@
 # cloud-diagram-icons-mcp
 
-Stdio MCP server that gives LLMs the exact draw.io style string for a named cloud service (Microsoft first). Compose it with the official [draw.io MCP tooling](https://github.com/jgraph/drawio-mcp): this server answers icon lookups, draw.io MCP builds and exports the diagram, and the result is AI-generated Azure diagrams with real portal icons.
+Stdio MCP server that gives LLMs the exact draw.io style string for a named cloud service (Microsoft first). Compose it with the official [draw.io MCP tooling](https://github.com/jgraph/drawio-mcp): this server answers icon lookups, draw.io MCP builds and exports the diagram, and the result is AI-generated architecture diagrams with real portal icons.
+
+Covers Azure, Power Platform, Dynamics 365, Microsoft Fabric, and Microsoft Entra.
 
 ## Tools
 

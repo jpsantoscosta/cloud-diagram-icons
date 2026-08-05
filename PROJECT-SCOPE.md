@@ -38,7 +38,7 @@ Rationale: descriptive beats brandable for a new project (search: "cloud diagram
 ## 3. What this project is NOT (out of scope)
 
 - **No diagram generation.** The official draw.io MCP project (jgraph/drawio-mcp) already ships an MCP app server with inline previews, an MCP tool server (`npx @drawio/mcp`), a Skill + CLI for Claude Code with PNG/SVG/PDF export, and a project-instructions method. This project composes with it, not duplicates it.
-- **No general-purpose human shape libraries.** draw.io's built-in Azure library is current, and maintained community projects cover one-click Azure + M365 libraries. Supplemental libraries are shipped only for estates the built-in set lacks (M365, Dynamics, full Power Platform), as a byproduct of the gap pipeline.
+- **No general-purpose human shape libraries.** draw.io's built-in Azure library is current, and maintained community projects cover one-click Azure + M365 libraries. Supplemental libraries are shipped only for estates the built-in set lacks (Dynamics 365, Microsoft Fabric, Entra product family, current Power Platform), as a byproduct of the gap pipeline.
 - **No Copilot Extension.** GitHub sunset GitHub App-based Copilot Extensions on 10 Nov 2025 in favour of MCP. MCP is the single integration path for Copilot, Claude, Cursor, VS Code, Visual Studio, and Copilot CLI.
 - **No third-party icon sources.** Azure icon references point at draw.io's own built-in assets (paths, not copies). Supplemental icons for gaps come exclusively from Microsoft's official downloadable SVG packs.
 - **No icon ownership claims.** Icons remain Microsoft's property under Microsoft's terms of use, which permit copying, distribution, and use in architecture diagrams and documentation. The icon mirror (D4) redistributes on that permitted-use basis, stated plainly in the README per source pack. Azure lookup entries redistribute nothing at all (path strings into draw.io's own bundled assets).
@@ -54,20 +54,23 @@ Machine-readable index. Provider-aware schema from day one. Two icon reference t
   "provider": "microsoft",
   "category": "ai_machine_learning",
   "name": "Azure OpenAI",
-  "aliases": ["OpenAI", "AOAI"],
-  "w": 48, "h": 48,
+  "aliases": ["Azure OpenAI Service", "AOAI", "OpenAI"],
+  "w": 68, "h": 68,
   "ref": "builtin",
-  "style": "image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/ai_machine_learning/Azure_OpenAI.svg;"
+  "style": "image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/ai_machine_learning/Azure_OpenAI.svg;",
+  "tags": "openai open ai"
 }
 ```
 
-- `ref: "builtin"` — Azure estate. Style is a tiny path string into draw.io's bundled azure2 assets. No SVG shipped, kilobytes total.
-- `ref: "embedded"` — gap estate (M365, Dynamics, full Power Platform). Style carries base64 SVG from official Microsoft packs.
+- `ref: "builtin"` — Azure and Power Platform estate. Style is a tiny path string into draw.io's bundled azure2 assets. No SVG shipped, kilobytes total.
+- `ref: "embedded"` — gap estates (Dynamics 365, Microsoft Fabric, Entra product family, current Power Platform). Style carries base64 SVG from official Microsoft packs, and `category` is namespaced as `<estate>/<group>`. Where a pack duplicates a builtin icon the builtin wins, so the same service is never indexed twice.
+- `tags` carries free search keywords: draw.io's own sidebar keywords for builtin entries, estate and item words for embedded ones.
 
 ### D2. Build pipeline (Phase 1)
 - **Index generator:** parses `Sidebar-Azure2.js` (or the `img/lib/azure2` tree) from jgraph/drawio to produce all builtin entries automatically. Aliases curated manually on top.
-- **Gap converter:** downloads official Microsoft SVG packs for M365/Dynamics/Power Platform, produces embedded entries plus supplemental mxlibrary files in `libraries/`.
-- **GitHub Action, monthly:** diff against jgraph/drawio (builtin freshness) and Microsoft packs (gap freshness), commit changes. The index never goes stale, which is the failure mode of every existing icon repo.
+- **Gap converter:** downloads official Microsoft SVG packs for Dynamics 365, Microsoft Fabric, Entra, and Power Platform, produces embedded entries, the icon mirror, and supplemental mxlibrary files in `libraries/`.
+- Each generator owns one entry type and preserves the other's, so they are idempotent and can run in either order.
+- **GitHub Action, monthly:** diff against jgraph/drawio (builtin freshness) and Microsoft packs (gap freshness), opening a pull request only when content actually changed. The index never goes stale, which is the failure mode of every existing icon repo.
 
 ### D3. Icon MCP server (Phase 2)
 npm package `cloud-diagram-icons-mcp`, stdio transport, local execution. Tools:
@@ -86,9 +89,11 @@ An always-current, categorised mirror of the official Microsoft icon estate, kep
 Structure:
 ```
 icons/microsoft/<estate>/<category>/<normalised-name>.svg
-manifest.json   (per icon: source pack, pack version, sha256, last sync date)
+icons/manifest.json   (per estate: label, source URL, reference page, pack sha256,
+                       last content change, count; per file: name, path, source
+                       path within the pack, sha256)
 ```
-- Normalised kebab-case filenames, one folder per estate (azure, m365, entra, power-platform, dynamics, fabric)
+- Normalised kebab-case filenames, one folder per mirrored estate (dynamics, entra, fabric, power-platform). Azure is not mirrored because its entries reference draw.io's bundled assets and redistribute nothing; M365 is excluded per the decisions log.
 - Consumers hotlink via jsDelivr for free CDN delivery
 - Git history doubles as the changelog of Microsoft icon additions/renames
 
@@ -108,7 +113,9 @@ Thin wrapper for Claude (skill) and Copilot (instructions file) that:
 - Encodes the project's diagram layout standards
 - References draw.io's official AI style reference for XML conventions
 
-## 5. Validation test (do this FIRST, before writing much code)
+## 5. Validation test (completed; results in the decisions log)
+
+Run before committing to the design, to confirm the core thesis holds:
 
 1. Install `@drawio/mcp`
 2. Have the model place one shape using a builtin style string, e.g. `image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/ai_machine_learning/Azure_OpenAI.svg;`
@@ -174,7 +181,7 @@ Progress tracking: mark steps `[x]` when done. The first unchecked step is the c
 | Mirror staged before commit | The gap pipeline holds every sanitised icon in memory and writes nothing until all sources pass their gates, so a failed or restructured upstream cannot leave a half-updated mirror on disk |
 | Branch protection admin exemption | Retained deliberately. The repository has a single collaborator with admin rights, so the exemption applies to the maintainer alone; it keeps routine maintenance direct while the rules still govern automated pull requests and any future collaborator. Revisit if collaborators are added |
 | Hostile index must not fall back silently | Transport and parse failures fall back to the bundled snapshot; an index that loads but fails validation raises instead, because silently serving the snapshot would mask tampering |
-| Composed end-to-end test | Passed 05 Aug 2026: a Claude Code session with @drawio/mcp + cloud-diagram-icons-mcp resolved five services through the icon server, produced builtin style strings, and the diagram rendered correctly in the draw.io editor (examples/demo.drawio). When prompted explicitly the model composes the servers correctly; the skill/instructions layer exists to make that behaviour automatic |
+| Composed end-to-end test | Passed 05 Aug 2026: a Claude Code session with @drawio/mcp + cloud-diagram-icons-mcp resolved five services through the icon server, produced builtin style strings, and the diagram rendered correctly in the draw.io editor (examples/azure-web-app.drawio). When prompted explicitly the model composes the servers correctly; the skill/instructions layer exists to make that behaviour automatic |
 
 ### 7a. Corrected assumptions (research, 03 Aug 2026)
 

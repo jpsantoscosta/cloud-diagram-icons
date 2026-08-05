@@ -14,6 +14,16 @@ The index is therefore treated as untrusted input at every boundary:
 - **Consumption.** The MCP server re-validates on load and drops any entry whose style is not a bundled asset path or an inline `data:image/svg+xml` URI, reporting the number dropped on stderr. Transport failures fall back to the bundled snapshot; a hostile index never falls back silently, because that would mask tampering.
 - **Overrides.** `CLOUD_DIAGRAM_ICONS_URL` lets users point the server at a fork or mirror. The same validation applies to any source.
 
+## Icon mirror pipeline
+
+`scripts/build-gap-icons.ps1` pulls icon packs from Microsoft and commits them to this repository, where they can be hotlinked. An SVG loaded as a document executes whatever it contains, so the pipeline treats every pack as untrusted:
+
+- **Allowlisted origins.** Downloads are restricted to HTTPS Microsoft download and Learn domains, plus the `microsoft` GitHub organisation. Any other URL aborts the run.
+- **Sanitisation.** Every SVG is stripped of `<script>`, inline event handlers, `<foreignObject>`, DOCTYPE declarations, and any `href`/`xlink:href` that leaves the document, then re-parsed to confirm it is still a valid SVG. The result is re-checked for the same patterns, so a failed strip fails the run rather than shipping.
+- **Sanity gates.** Per file: parses as SVG, under 500 KB. Per estate: the icon count may not move more than 20% against the last sync, so a restructured or truncated pack cannot quietly gut the mirror.
+- **Staged writes.** Nothing reaches disk until every source has passed every gate, so a failure cannot leave a half-updated mirror.
+- **Integrity.** `icons/manifest.json` records each pack's source URL and sha256 plus a sha256 per mirrored file, so any silent upstream content change is visible in the diff.
+
 ## Supply chain
 
 - GitHub Actions are pinned by commit SHA; Dependabot keeps them current.

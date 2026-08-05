@@ -1,6 +1,6 @@
 ---
 name: cloud-diagram-icons
-description: Use when creating or editing draw.io diagrams that contain cloud services (Azure, Microsoft Entra, Power Platform, or any Microsoft service). Resolves every service to its correct modern portal icon through the cloud-diagram-icons MCP server before any diagram XML is written. Trigger on any request to draw, generate, or modify an architecture diagram.
+description: Use when creating or editing draw.io diagrams that contain cloud services (Azure, Microsoft Entra, Power Platform, Dynamics 365, Microsoft Fabric, or any Microsoft service). Resolves every service to its correct modern portal icon through the cloud-diagram-icons MCP server before any diagram XML is written. Trigger on any request to draw, generate, or modify an architecture diagram.
 ---
 
 # cloud-diagram-icons
@@ -14,6 +14,7 @@ Generate draw.io diagrams whose cloud services carry the real, current portal ic
 2. **Resolve each service through the MCP server** (`cloud-diagram-icons`):
    - `get_icon(name)` for exact names or well-known aliases ("AKS", "Azure AD", "ADF").
    - `search_icons(query)` when unsure; take the top hit unless its score is weak, then ask.
+   - Qualify the estate when a name is ambiguous across products: "Fabric Data Factory" and "Azure Data Factory" are different services with different icons, as are Fabric and Azure SQL Database.
    - Use the returned `style` string **verbatim**. Never write `image=img/lib/azure2/...` paths by hand, never use `mxgraph.azure`/`mscae` legacy shapes, never substitute emoji or generic shapes for a service that resolved.
    - Use the returned `w`/`h` as the default size; scale proportionally if needed (aspect stays fixed).
 

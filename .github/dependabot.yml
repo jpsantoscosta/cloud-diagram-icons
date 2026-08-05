@@ -4,3 +4,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+  # The published MCP server's runtime dependencies.
+  - package-ecosystem: npm
+    directory: /mcp
+    schedule:
+      interval: weekly
