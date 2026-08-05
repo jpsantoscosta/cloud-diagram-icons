@@ -26,10 +26,30 @@ The index is therefore treated as untrusted input at every boundary:
 
 ## Supply chain
 
-- GitHub Actions are pinned by commit SHA; Dependabot keeps them current.
+- GitHub Actions are pinned by commit SHA; Dependabot keeps both the Actions and the MCP package's dependencies current.
 - The refresh workflow never pushes to `main`. It opens a pull request for review, and opens an issue when a run fails.
 - `main` requires pull requests, forbids force-pushes, and enforces linear history.
 - Secret scanning with push protection, Dependabot alerts, and Dependabot security updates are enabled.
+
+## Dependencies and scanner findings
+
+The npm package has two direct dependencies, `@modelcontextprotocol/sdk` and `zod`, and no known vulnerabilities.
+
+Supply-chain scanners such as Socket report *capability* alerts against the dependency tree: use of `eval`, shell access, and network access. These describe what a package is able to do, not a defect, and every one of them comes from the official MCP SDK rather than from this project's code:
+
+| Alert | Origin | Why it is there |
+|---|---|---|
+| Uses eval | `ajv` | The JSON Schema validator compiles schemas into functions with `new Function`. This is how ajv has always worked. |
+| Shell access | `cross-spawn` | The SDK's stdio **client** transport spawns child server processes. This server is the process being spawned, so it never takes that path. |
+| Network access | `express`, `hono`, `cors`, `eventsource` | The SDK's HTTP and SSE server transports. |
+
+This server uses the stdio transport only: it imports `McpServer` and `StdioServerTransport` and nothing else from the SDK, so the HTTP stack is installed but never loaded. npm cannot install part of a package, so those dependencies arrive regardless of which transport is used.
+
+This project's own code contains no `eval`, no `new Function`, and no child process execution. Note that `src/icons.js` contains `.exec(`, which is the regular-expression method rather than process execution; it is easy to misread when auditing.
+
+The server makes exactly one network request of its own: an HTTPS GET for `icons.json`, to the URL in `CLOUD_DIAGRAM_ICONS_URL` or the project's GitHub raw URL by default. The response is validated as described above before any part of it is served.
+
+A "Socket optimized override available" notice is not a finding; it is a vendor offer to substitute their own builds of your dependencies.
 
 ## Icons
 
